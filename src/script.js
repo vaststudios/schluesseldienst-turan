@@ -186,7 +186,8 @@ function debounce(func, wait) {
             const targetElement = document.getElementById(targetId);
             
             if (targetElement) {
-                const headerHeight = 100;
+                const header = document.getElementById('main-header');
+                const headerHeight = header ? header.offsetHeight + 20 : 120; // Add extra padding
                 const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
                 
                 window.scrollTo({

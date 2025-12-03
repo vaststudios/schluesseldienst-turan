@@ -164,6 +164,10 @@ body {
     background: rgba(0, 0, 0, 0.05);
 }
 
+.nav-link.texture-button-ghost {
+    border-radius: 0;
+}
+
 /* Text Selection Styling */
 ::selection {
     background-color: #ff6900;
