@@ -22,30 +22,69 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Custom scrollbar styling */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+/* Global fix: Prevent any element from creating horizontal scrollbars */
+main,
+main > *,
+main > * > * {
+    max-width: 100%;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
 }
 
-::-webkit-scrollbar-track {
-    background: transparent;
+/* Prevent overflow from flex containers with gaps */
+.flex,
+.flex-col,
+.flex-row {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 105, 0, 0.3);
-    border-radius: 4px;
+.grid {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 105, 0, 0.5);
+/* Ensure all containers respect boundaries - no scrollbars on sections */
+section {
+    overflow-x: hidden !important;
+    overflow-y: visible;
+    max-width: 100%;
+    width: 100%;
 }
 
-/* Firefox scrollbar */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 105, 0, 0.3) transparent;
+div[class*="max-w"] {
+    overflow-x: hidden !important;
+    overflow-y: visible;
+    max-width: 100%;
 }
+
+/* Ensure section children don't create scrollbars */
+section > *,
+section > * > * {
+    overflow-x: hidden !important;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Prevent flex containers from overflowing */
+section .flex,
+section .flex-col,
+section .flex-row,
+section .grid {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
+
+/* Ensure all divs inside sections respect boundaries */
+section div {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Remove custom scrollbars - use browser default only */
 
 /* Critical mobile overflow fixes for iPhone 16 */
 @media (max-width: 767px) {
@@ -81,6 +120,14 @@ body {
     header, main, footer {
         overflow-x: hidden;
         width: 100%;
+        max-width: 100%;
+    }
+    
+    /* Ensure inner containers don't overflow */
+    main > div,
+    header > div,
+    footer > div {
+        overflow-x: hidden;
         max-width: 100%;
     }
 }
@@ -277,6 +324,11 @@ body {
     padding-bottom: 3.5rem !important;
     position: relative;
     margin-bottom: 0;
+    overflow: visible !important;
+}
+
+.team-swiper .swiper-wrapper {
+    overflow: visible !important;
 }
 
 .team-swiper .swiper-slide {
@@ -285,6 +337,7 @@ body {
     display: flex;
     justify-content: center;
     padding-bottom: 0;
+    overflow: visible !important;
 }
 
 /* Slick Pagination Dots - Override Swiper defaults */
