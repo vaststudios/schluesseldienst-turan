@@ -4,29 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lockfix - 24/7 Notdienst in München</title>
+    <link rel="icon" type="image/svg+xml" href="./assets/logo.svg">
     <!-- DNS Prefetch for external resources -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://snazzymaps.com">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
     
     <!-- Preconnect to critical domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     
     <!-- Preload critical assets -->
-    <link rel="preload" href="./assets/logo.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="./assets/logo.svg" as="image" type="image/svg+xml" fetchpriority="high">
+    <link rel="preload" href="./dist/output.css" as="style">
+    <link rel="preload" href="./src/styles.css" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style">
     
-    <!-- Load fonts with display=swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
-    
-    <!-- Critical CSS - inline or load first -->
+    <!-- Critical CSS - load first -->
     <link rel="stylesheet" href="./dist/output.css">
     <link rel="stylesheet" href="./src/styles.css">
     
-    <!-- Defer non-critical CSS -->
+    <!-- Load fonts with display=swap - non-blocking -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Defer non-critical CSS - Swiper only loads when needed -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
     
@@ -186,7 +192,7 @@
                     <!-- Large Card - Top Left -->
                     <div class="animate-on-scroll stagger-2 bg-neutral-900 md:row-span-2 rounded-card overflow-hidden relative h-[380px] md:h-auto cult-card-shadow service-card-hover">
                         <div class="absolute inset-0 opacity-50 image-container">
-                            <img src="./assets/15ffa5c66d5c47a0d16bdf05521358f3f6587a2e.png" alt="Service" class="w-full h-full object-cover">
+                            <img src="./assets/15ffa5c66d5c47a0d16bdf05521358f3f6587a2e.png" alt="Service" class="w-full h-full object-cover" loading="lazy" decoding="async" fetchpriority="low">
                             <div class="texture-overlay-dots"></div>
                         </div>
                         <div class="absolute inset-0 flex flex-col justify-between p-5 md:p-8">
@@ -244,7 +250,7 @@
 
                     <!-- Map Card - Bottom Right -->
                     <div class="animate-on-scroll stagger-5 md:col-span-2 rounded-card overflow-hidden relative h-[450px] md:h-auto cult-card-shadow service-card-hover">
-                        <iframe src="https://snazzymaps.com/embed/757909" width="100%" height="100%" style="border:none;" class="absolute inset-0 w-full h-full rounded-card"></iframe>
+                        <iframe src="https://snazzymaps.com/embed/757909" width="100%" height="100%" style="border:none;" class="absolute inset-0 w-full h-full rounded-card" loading="lazy" title="München Karte"></iframe>
                         <div class="absolute inset-0 pointer-events-none flex flex-col justify-between p-5 md:p-8 z-10">
                             <div class="flex items-center justify-between">
                                 <div class="texture-button texture-button-icon w-10 h-10 md:w-12 md:h-12 pointer-events-auto">
@@ -459,7 +465,7 @@
             <div class="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-0">
                 <div class="w-full md:w-[28.5rem] flex flex-col gap-6 md:gap-12">
                     <div class="h-5 md:h-6 w-full">
-                        <img src="./assets/logo.svg" alt="Lockfix Logo" class="h-full">
+                        <img src="./assets/logo.svg" alt="Lockfix Logo" class="h-full" loading="lazy" decoding="async" fetchpriority="low">
                     </div>
                     <p class="font-bold text-heading-1-mobile md:text-heading-1 leading-heading-1-mobile md:leading-heading-1 tracking-tight text-white">
                         Sichern wir Ihre Zukunft
@@ -501,5 +507,23 @@
         </div>
     </footer>
     <script src="./src/script.js" defer></script>
+    <!-- Vercel Speed Insights -->
+    <script>
+        (function() {
+            var script = document.createElement('script');
+            script.src = 'https://va.vercel-scripts.com/v1/speed-insights/script.js';
+            script.defer = true;
+            document.head.appendChild(script);
+        })();
+    </script>
+    <!-- Vercel Analytics -->
+    <script>
+        (function() {
+            var script = document.createElement('script');
+            script.src = 'https://va.vercel-scripts.com/v1/script.js';
+            script.defer = true;
+            document.head.appendChild(script);
+        })();
+    </script>
 </body>
 </html>
