@@ -1,0 +1,27 @@
+<!--
+  CDN-based utility function for Cult UI's cn() helper
+  Use this in HTML files when you can't use a bundler
+-->
+<script>
+  // Load dependencies from CDN
+  (function() {
+    // Load clsx
+    const clsxScript = document.createElement('script');
+    clsxScript.src = 'https://cdn.jsdelivr.net/npm/clsx@latest/dist/clsx.min.js';
+    clsxScript.onload = function() {
+      // Load tailwind-merge
+      const twMergeScript = document.createElement('script');
+      twMergeScript.src = 'https://cdn.jsdelivr.net/npm/tailwind-merge@latest/dist/index.umd.js';
+      twMergeScript.onload = function() {
+        // Create cn utility function
+        window.cn = function(...inputs) {
+          return window.twMerge(window.clsx(inputs));
+        };
+        console.log('Cult UI utilities loaded! Use window.cn() to merge Tailwind classes.');
+      };
+      document.head.appendChild(twMergeScript);
+    };
+    document.head.appendChild(clsxScript);
+  })();
+</script>
+
