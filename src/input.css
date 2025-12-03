@@ -29,13 +29,18 @@
         padding: 0;
     }
     
-    /* Prevent horizontal scroll on mobile */
+    /* Prevent horizontal scroll - only on main containers */
     main,
-    section,
     header,
     footer {
         max-width: 100vw;
         overflow-x: hidden;
+    }
+    
+    /* Text wrapping for content - no overflow hidden */
+    p, h1, h2, h3, h4, h5, h6 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
     
     /* Fix for iOS Safari viewport issues */
@@ -47,6 +52,27 @@
         body {
             min-height: 100vh;
             min-height: -webkit-fill-available;
+        }
+    }
+}
+
+/* Mobile-specific fixes */
+@layer utilities {
+    /* Prevent text overflow on mobile */
+    @media (max-width: 767px) {
+        h1, h2, h3, h4, h5, h6 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            max-width: 100%;
+        }
+        
+        /* Ensure containers don't overflow */
+        .max-w-mobile {
+            max-width: 100% !important;
+            width: 100% !important;
+            padding-left: 1rem;
+            padding-right: 1rem;
         }
     }
 }

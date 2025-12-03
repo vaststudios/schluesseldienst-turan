@@ -14,6 +14,36 @@ body {
     max-width: 100%;
     position: relative;
 }
+
+/* Critical mobile overflow fixes for iPhone 16 */
+@media (max-width: 767px) {
+    html {
+        overflow-x: hidden;
+    }
+    
+    body {
+        overflow-x: hidden;
+    }
+    
+    /* Text wrapping for long words - no overflow hidden on text */
+    h1, h2, h3, h4, h5, h6, p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+    
+    /* Fix hero text overflow */
+    h1.text-hero-mobile,
+    h1 span {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* Only main containers prevent overflow */
+    header, main, footer {
+        overflow-x: hidden;
+    }
+}
 /* Cult UI Texture Button Styles */
 .texture-button {
     position: relative;
