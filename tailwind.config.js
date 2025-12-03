@@ -60,7 +60,7 @@ module.exports = {
       maxWidth: {
         'container-content': '1100px',
         'container-wide': '1425px',
-        'mobile': '390px',
+        'mobile': '100%', // Use full width on mobile, let padding handle spacing
       },
       screens: {
         'mobile': {'max': '767px'},
