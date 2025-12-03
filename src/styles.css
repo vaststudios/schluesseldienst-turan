@@ -23,65 +23,137 @@ body {
 }
 
 /* Global fix: Prevent any element from creating horizontal scrollbars */
-main,
-main > *,
-main > * > * {
+main {
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+}
+
+/* Don't override max-width on main children - let Tailwind classes work */
+main > *:not([class*="max-w"]) {
     max-width: 100%;
     overflow-x: hidden !important;
     box-sizing: border-box;
 }
 
-/* Prevent overflow from flex containers with gaps */
-.flex,
-.flex-col,
-.flex-row {
+/* Prevent overflow from flex containers with gaps - NO scrollbars */
+/* Don't override max-width on elements with Tailwind max-w classes */
+.flex:not([class*="max-w"]):not([class*="overflow"]),
+.flex-col:not([class*="max-w"]):not([class*="overflow"]),
+.flex-row:not([class*="max-w"]):not([class*="overflow"]) {
     min-width: 0;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    overflow: visible !important;
 }
 
-.grid {
+/* Elements with overflow-x-hidden class should only hide horizontal overflow - NO scrollbars */
+[class*="overflow-x-hidden"] {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    overflow: visible !important;
+    /* Ensure no scrollbars appear */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+[class*="overflow-x-hidden"]::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.grid:not([class*="max-w"]) {
     min-width: 0;
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    overflow: visible !important;
 }
 
-/* Ensure all containers respect boundaries - no scrollbars on sections */
+/* Ensure all containers respect boundaries - NO scrollbars on sections or children */
 section {
     overflow-x: hidden !important;
-    overflow-y: visible;
-    max-width: 100%;
+    overflow-y: visible !important;
     width: 100%;
+    /* Don't set max-width - let Tailwind classes control it */
 }
 
+/* Don't override max-width on divs with max-w classes - let Tailwind classes work */
 div[class*="max-w"] {
     overflow-x: hidden !important;
-    overflow-y: visible;
-    max-width: 100%;
+    overflow-y: visible !important;
+    overflow: visible !important;
+    /* max-width is controlled by Tailwind classes, don't override */
 }
 
-/* Ensure section children don't create scrollbars */
-section > *,
-section > * > * {
+/* Ensure section children don't create scrollbars - NO overflow auto/scroll */
+/* Don't override max-width on elements with Tailwind max-w classes */
+section > *:not([class*="max-w"]),
+section > * > *:not([class*="max-w"]),
+section > * > * > *:not([class*="max-w"]) {
     overflow-x: hidden !important;
+    overflow-y: visible !important;
+    overflow: visible !important;
     max-width: 100%;
     box-sizing: border-box;
 }
 
-/* Prevent flex containers from overflowing */
-section .flex,
-section .flex-col,
-section .flex-row,
-section .grid {
+/* Prevent flex containers from overflowing - NO scrollbars */
+/* Don't override max-width on elements with Tailwind max-w classes */
+section .flex:not([class*="max-w"]),
+section .flex-col:not([class*="max-w"]),
+section .flex-row:not([class*="max-w"]),
+section .grid:not([class*="max-w"]) {
     min-width: 0;
     max-width: 100%;
     overflow-x: hidden !important;
+    overflow-y: visible !important;
+    overflow: visible !important;
 }
 
-/* Ensure all divs inside sections respect boundaries */
-section div {
+/* Ensure all divs inside sections respect boundaries - NO scrollbars */
+/* Don't override max-width on elements with Tailwind max-w classes */
+section div:not([class*="max-w"]),
+section p,
+section h1,
+section h2,
+section h3,
+section h4,
+section h5,
+section h6,
+section span {
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    overflow: visible !important;
     max-width: 100%;
     box-sizing: border-box;
+}
+
+/* Global: Only html and body can scroll - prevent scrollbars on all other elements */
+*:not(html):not(body) {
+    overflow-y: visible !important;
+}
+
+/* Only html and body can have vertical scrollbars */
+html {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Exception: Elements that intentionally use overflow: hidden for clipping */
+.texture-button,
+.image-container,
+.ripple,
+.swiper,
+.swiper-wrapper,
+.swiper-slide {
+    overflow: hidden !important;
 }
 
 /* Remove custom scrollbars - use browser default only */
@@ -997,6 +1069,111 @@ a:focus-visible {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+/* Text Shine/Shimmer Effect - Subtle and Eye-catching */
+/* Uses text-shadow for a subtle glow effect that doesn't show background */
+.text-shine {
+    position: relative;
+    display: inline-block;
+    animation: textShineGlow 10s ease-in-out infinite;
+}
+
+@keyframes textShineGlow {
+    0%, 100% {
+        text-shadow: 
+            0 0 0px rgba(255, 255, 255, 0),
+            0 0 0px rgba(255, 255, 255, 0);
+    }
+    25% {
+        text-shadow: 
+            0 0 2px rgba(255, 255, 255, 0.1),
+            0 0 4px rgba(255, 255, 255, 0.05);
+    }
+    50% {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.2),
+            0 0 8px rgba(255, 255, 255, 0.1);
+    }
+    75% {
+        text-shadow: 
+            0 0 2px rgba(255, 255, 255, 0.1),
+            0 0 4px rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Dark mode - more subtle glow */
+.dark .text-shine {
+    animation: textShineGlowDark 10s ease-in-out infinite;
+}
+
+@keyframes textShineGlowDark {
+    0%, 100% {
+        text-shadow: 
+            0 0 0px rgba(255, 255, 255, 0),
+            0 0 0px rgba(255, 255, 255, 0);
+    }
+    25% {
+        text-shadow: 
+            0 0 2px rgba(255, 255, 255, 0.05),
+            0 0 4px rgba(255, 255, 255, 0.02);
+    }
+    50% {
+        text-shadow: 
+            0 0 4px rgba(255, 255, 255, 0.1),
+            0 0 8px rgba(255, 255, 255, 0.05);
+    }
+    75% {
+        text-shadow: 
+            0 0 2px rgba(255, 255, 255, 0.05),
+            0 0 4px rgba(255, 255, 255, 0.02);
+    }
+}
+
+/* Gradient text with shine - uses filter for subtle brightness effect */
+.text-gradient.text-shine {
+    position: relative;
+    background: linear-gradient(135deg, #ff6900, #f54900);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textShineGradient 10s ease-in-out infinite;
+    filter: brightness(1);
+}
+
+@keyframes textShineGradient {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.15);
+    }
+}
+
+.dark .text-gradient.text-shine {
+    animation: textShineGradientDark 10s ease-in-out infinite;
+}
+
+@keyframes textShineGradientDark {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.1);
+    }
+}
+
+/* Stagger the animation for each line - creates wave effect */
+.text-shine:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+.text-shine:nth-of-type(2) {
+    animation-delay: 0.5s;
+}
+
+.text-shine:nth-of-type(3) {
+    animation-delay: 1s;
 }
 
 /* Hero Section - Parallax removed to prevent overlapping */
