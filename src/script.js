@@ -7,16 +7,24 @@
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     };
 
-    const setTheme = (theme) => {
+    const setTheme = (theme, isManualToggle = false) => {
         const root = document.documentElement;
         root.classList.remove('light', 'dark');
         root.classList.add(theme);
-        localStorage.setItem('theme', theme);
+        if (isManualToggle) {
+            // Only save to localStorage if user manually toggled
+            localStorage.setItem('theme', theme);
+            localStorage.setItem('theme-manual', 'true');
+        } else {
+            // Clear manual flag if setting based on OS preference
+            localStorage.removeItem('theme-manual');
+        }
     };
 
     // Initialize theme on page load
-    const theme = getThemePreference();
-    setTheme(theme);
+    // The inline script already set it based on OS preference or manual preference
+    // This code just ensures event listeners are set up correctly
+    // No need to override what inline script already did
 
     // Theme toggle button handlers (desktop and mobile)
     const themeToggle = document.getElementById('theme-toggle');
@@ -25,7 +33,7 @@
     const handleThemeToggle = () => {
         const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
+        setTheme(newTheme, true); // Mark as manual toggle and save to localStorage
         // Re-initialize icons after theme change
         setTimeout(() => lucide.createIcons(), 100);
     };
@@ -40,8 +48,9 @@
 
     // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            setTheme(e.matches ? 'dark' : 'light');
+        // Only update if user hasn't manually set a preference
+        if (localStorage.getItem('theme-manual') !== 'true') {
+            setTheme(e.matches ? 'dark' : 'light', false); // Don't mark as manual, don't save
         }
     });
 })();

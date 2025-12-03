@@ -33,16 +33,22 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
     
     <!-- Set theme immediately to prevent flash of unstyled content -->
+    <!-- Always prioritize OS preference unless user has manually set a preference -->
     <script>
         (function() {
-            const getThemePreference = () => {
-                if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-                    return localStorage.getItem('theme');
-                }
-                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            };
+            // Check if user has manually set a preference (stored as 'theme-manual' flag)
+            const hasManualPreference = typeof localStorage !== 'undefined' && localStorage.getItem('theme-manual') === 'true';
+            const savedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
             
-            const theme = getThemePreference();
+            let theme;
+            if (hasManualPreference && savedTheme) {
+                // User has manually toggled theme, use saved preference
+                theme = savedTheme;
+            } else {
+                // No manual preference, always use OS preference
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            
             document.documentElement.classList.remove('light', 'dark');
             document.documentElement.classList.add(theme);
         })();
