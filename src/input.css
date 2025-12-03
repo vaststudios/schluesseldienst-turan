@@ -17,16 +17,18 @@
         text-size-adjust: 100%;
         overflow-x: hidden;
         width: 100%;
-        max-width: 100vw;
+        height: 100%;
+        margin: 0;
+        padding: 0;
     }
     
     body {
         overflow-x: hidden;
         width: 100%;
-        max-width: 100vw;
-        position: relative;
         margin: 0;
         padding: 0;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
     }
     
     /* Prevent horizontal scroll - only on main containers */
