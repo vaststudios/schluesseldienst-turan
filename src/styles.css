@@ -1,4 +1,4 @@
-/* Reset and base styles for mobile */
+/* Reset and base styles */
 html {
     -webkit-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;
@@ -22,25 +22,45 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 105, 0, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 105, 0, 0.5);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 105, 0, 0.3) transparent;
+}
+
 /* Critical mobile overflow fixes for iPhone 16 */
 @media (max-width: 767px) {
     html {
         overflow-x: hidden;
-        width: 100vw;
+        width: 100%;
         margin: 0;
         padding: 0;
     }
     
     body {
         overflow-x: hidden;
-        width: 100vw;
+        width: 100%;
         margin: 0;
         padding: 0;
-    }
-    
-    /* Ensure document element uses full width */
-    html, body {
-        min-width: 100vw;
     }
     
     /* Text wrapping for long words - no overflow hidden on text */
@@ -60,8 +80,8 @@ body {
     /* Only main containers prevent overflow */
     header, main, footer {
         overflow-x: hidden;
-        width: 100vw;
-        max-width: 100vw;
+        width: 100%;
+        max-width: 100%;
     }
 }
 /* Cult UI Texture Button Styles */
