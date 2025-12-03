@@ -63,8 +63,8 @@ module.exports = {
         'mobile': '390px',
       },
       screens: {
-        'mobile': {'max': '390px'},
-        'md': '391px',
+        'mobile': {'max': '767px'},
+        'md': '768px',
       },
       borderRadius: {
         'card': '32px',
