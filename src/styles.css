@@ -1,5 +1,18 @@
+/* Reset and base styles for mobile */
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
 }
 /* Cult UI Texture Button Styles */
 .texture-button {
@@ -270,7 +283,7 @@ body {
     background: #ff6900;
 }
 
-@media (min-width: 391px) {
+@media (min-width: 768px) {
     .team-swiper {
         display: none;
     }
