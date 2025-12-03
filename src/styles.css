@@ -386,6 +386,70 @@ body {
         0px 8px 16px rgba(0, 0, 0, 0.3);
 }
 
+/* Philosophy Cards Container - Enhanced Design */
+.philosophy-cards-container {
+    padding: 2rem 0;
+    position: relative;
+}
+
+/* Connecting lines between cards on desktop */
+@media (min-width: 768px) {
+    .philosophy-cards-container::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255, 105, 0, 0.1) 25%,
+            rgba(255, 105, 0, 0.1) 75%,
+            transparent 100%
+        );
+        transform: translateY(-50%);
+        pointer-events: none;
+        opacity: 0.3;
+    }
+}
+
+/* Philosophy Card - No border on hover, subtle animation */
+.philosophy-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    padding: 1rem;
+}
+
+.philosophy-card::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    background: linear-gradient(135deg, rgba(255, 105, 0, 0.05) 0%, transparent 50%);
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-2px);
+    opacity: 1;
+}
+
+.philosophy-card:hover::before {
+    opacity: 1;
+}
+
+/* Icon glow effect on hover */
+.philosophy-card:hover .bg-brand-orange {
+    box-shadow: 
+        0px 0px 0px 1px rgba(255, 105, 0, 0.2),
+        0px 0px 20px rgba(255, 105, 0, 0.15);
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* Service Card Hover - Subtle Interaction Only, Preserve Original Colors */
 .service-card-hover {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -837,6 +901,42 @@ a:focus-visible {
 /* Footer Link Underline Animation */
 .footer-link {
     position: relative;
+}
+
+/* Typewriter Animation Styles */
+.typewriter-text {
+    display: block;
+    width: 100%;
+    /* Reserve space to prevent layout shift - adjust based on content */
+    min-height: 2.5em;
+}
+
+.typewriter-words {
+    display: inline-block;
+    width: 100%;
+    min-height: inherit;
+}
+
+.typewriter-word {
+    display: inline;
+    white-space: pre-wrap;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+    vertical-align: baseline;
+    /* Reserve space even when invisible to prevent layout shift */
+    min-width: 0.1em;
+}
+
+.typewriter-word.opacity-0 {
+    opacity: 0;
+    transform: translateY(2px);
+    /* Keep visibility to maintain space */
+    visibility: visible;
+}
+
+.typewriter-word.opacity-100 {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .footer-link::after {

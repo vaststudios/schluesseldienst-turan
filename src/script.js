@@ -80,6 +80,16 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                
+                // Trigger typewriter animation for philosophy heading
+                if (entry.target.id === 'philosophy-heading' || entry.target.querySelector('#philosophy-heading')) {
+                    const heading = entry.target.id === 'philosophy-heading' ? entry.target : entry.target.querySelector('#philosophy-heading');
+                    if (heading && !heading.classList.contains('typewriter-started')) {
+                        heading.classList.add('typewriter-started');
+                        startTypewriterAnimation(heading);
+                    }
+                }
+                
                 // Unobserve after animation to improve performance
                 observer.unobserve(entry.target);
             }
@@ -89,7 +99,87 @@
     // Observe all elements with animate-on-scroll class
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach(el => observer.observe(el));
+    
+    // Also observe the philosophy heading directly for typewriter animation
+    const philosophyHeading = document.getElementById('philosophy-heading');
+    if (philosophyHeading) {
+        const typewriterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('typewriter-started')) {
+                    entry.target.classList.add('typewriter-started');
+                    startTypewriterAnimation(entry.target);
+                    typewriterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+        typewriterObserver.observe(philosophyHeading);
+    }
 })();
+
+// Typewriter Animation for Philosophy Heading
+function startTypewriterAnimation(element) {
+    const fullText = "Wir verbinden traditionelles Handwerk mit digitaler Sicherheit, um aus Schwachstellen Stärke zu machen.";
+    const words = fullText.split(' ');
+    const wordsContainer = element.querySelector('.typewriter-words');
+    
+    if (!wordsContainer) return;
+    
+    // Pre-populate with invisible text to reserve space and prevent layout shift
+    wordsContainer.innerHTML = `<span style="opacity: 0; visibility: hidden; position: absolute; white-space: pre-wrap;">${fullText}</span>`;
+    
+    // Get the height before clearing
+    const reservedHeight = wordsContainer.offsetHeight;
+    wordsContainer.style.minHeight = reservedHeight + 'px';
+    
+    // Clear and start animation
+    wordsContainer.innerHTML = '';
+    
+    let currentWordIndex = 0;
+    const delayBetweenWords = 40; // milliseconds (faster)
+    const delayBetweenChars = 15; // milliseconds (faster)
+    
+    function typeNextWord() {
+        if (currentWordIndex >= words.length) return;
+        
+        const word = words[currentWordIndex];
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'typewriter-word opacity-0 translate-y-2';
+        
+        // Add space after word (except last)
+        const wordText = currentWordIndex < words.length - 1 ? word + ' ' : word;
+        
+        let charIndex = 0;
+        function typeNextChar() {
+            if (charIndex < wordText.length) {
+                wordSpan.textContent += wordText[charIndex];
+                charIndex++;
+                setTimeout(typeNextChar, delayBetweenChars);
+            } else {
+                // Animate word appearance (faster transition)
+                requestAnimationFrame(() => {
+                    wordSpan.style.transition = 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)';
+                    wordSpan.classList.remove('opacity-0', 'translate-y-2');
+                    wordSpan.classList.add('opacity-100', 'translate-y-0');
+                });
+                
+                // Check if this is the part that should be dimmed
+                if (currentWordIndex >= words.indexOf('um')) {
+                    wordSpan.classList.add('text-white/25', 'dark:text-black/25');
+                }
+                
+                currentWordIndex++;
+                if (currentWordIndex < words.length) {
+                    setTimeout(typeNextWord, delayBetweenWords);
+                }
+            }
+        }
+        
+        wordsContainer.appendChild(wordSpan);
+        typeNextChar();
+    }
+    
+    typeNextWord();
+}
 
 // Initialize Swiper for Team Section (Mobile Only) - Lazy load when needed
 (function() {
