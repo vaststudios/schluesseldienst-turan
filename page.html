@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://lockfix.vercel.app/">
     <meta property="og:title" content="Lockfix - 24/7 Notdienst in München">
     <meta property="og:description" content="24/7 Schlüsseldienst in München. Zerstörungsfreie Türöffnung in 15-30 Minuten. Geprüfte Meisterbetriebe mit Festpreisgarantie. Rund um die Uhr erreichbar.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=630&fit=crop&q=80">
+    <meta property="og:image" content="./assets/logo.svg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Lockfix - 24/7 Schlüsseldienst München - Professioneller Schlüsseldienst Service">
@@ -37,14 +37,13 @@
     <meta name="language" content="German">
     <meta name="geo.region" content="DE-BY">
     <meta name="geo.placename" content="München">
-    <meta name="theme-color" content="#ff6900">
+    <meta name="theme-color" content="#1a365d">
     <!-- DNS Prefetch for external resources -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://unpkg.com">
-    <link rel="dns-prefetch" href="https://snazzymaps.com">
-    <link rel="dns-prefetch" href="https://maps.googleapis.com">
+    <link rel="dns-prefetch" href="https://maps.google.com">
     
     <!-- Preconnect to critical domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,28 +64,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
     
-    <!-- Set theme immediately to prevent flash of unstyled content -->
-    <!-- Always prioritize OS preference unless user has manually set a preference -->
-    <script>
-        (function() {
-            // Check if user has manually set a preference (stored as 'theme-manual' flag)
-            const hasManualPreference = typeof localStorage !== 'undefined' && localStorage.getItem('theme-manual') === 'true';
-            const savedTheme = typeof localStorage !== 'undefined' ? localStorage.getItem('theme') : null;
-            
-            let theme;
-            if (hasManualPreference && savedTheme) {
-                // User has manually toggled theme, use saved preference
-                theme = savedTheme;
-            } else {
-                // No manual preference, always use OS preference
-                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            }
-            
-            document.documentElement.classList.remove('light', 'dark');
-            document.documentElement.classList.add(theme);
-        })();
-    </script>
-    
     <!-- Defer non-critical CSS - Swiper only loads when needed -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
@@ -97,77 +74,67 @@
     
         
 </head>
-<body class="bg-brand-dark dark:bg-neutral-100 text-white dark:text-neutral-900 relative min-h-screen transition-colors duration-300">
+<body class="bg-white text-text-dark relative min-h-screen">
     <a href="#main-content" class="skip-to-content">Zum Hauptinhalt springen</a>
     <div class="scroll-progress" role="progressbar" aria-label="Scroll-Fortschritt" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
     <button class="scroll-to-top" aria-label="Nach oben scrollen" title="Nach oben scrollen">
         <i data-lucide="arrow-up" class="w-5 h-5" aria-hidden="true"></i>
     </button>
     <!-- Header -->
-    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 px-4 py-4 md:px-44 md:py-12 transition-all duration-300 backdrop-blur-xl backdrop-saturate-150 bg-white/1 dark:bg-neutral-100/10 dark:border-black/25 w-full overflow-x-hidden">
-        <div class="w-full max-w-full md:max-w-container-content mx-auto flex items-center justify-between">
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 px-4 py-4 md:px-8 md:py-6 transition-all duration-300 backdrop-blur-xl backdrop-saturate-150 bg-white/80 border-b border-border-subtle w-full overflow-x-hidden">
+        <div class="w-full max-w-container-content mx-auto flex items-center justify-between">
             <!-- Logo -->
-            <a href="#" class="logo-link h-8 w-28 md:h-logo-h md:w-logo-w transition-transform duration-300 hover:scale-105">
-                <img src="./assets/logo.svg" alt="Lockfix Logo" class="w-full h-full object-contain" width="199" height="55" fetchpriority="high">
+            <a href="#" class="logo-link h-20 w-20 md:h-24 md:w-24 transition-transform duration-300 hover:scale-105">
+                <img src="./assets/logo.svg" alt="Schlüsseldienst Turan Logo" class="w-full h-full object-contain" width="96" height="96" fetchpriority="high">
             </a>
             
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center gap-6">
                 <div class="flex items-center gap-1">
                     <button data-scroll-to="services" class="nav-link texture-button texture-button-ghost px-5 py-3 relative group overflow-hidden">
-                        <span class="font-bold text-body-lg leading-body-lg tracking-tight text-white dark:text-neutral-900 relative z-10">Leistungen</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-orange transition-all duration-300 group-hover:w-full"></span>
+                        <span class="font-bold text-body-lg leading-body-lg tracking-tight text-text-dark relative z-10">Leistungen</span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover:w-full"></span>
                     </button>
                     <button data-scroll-to="philosophy" class="nav-link texture-button texture-button-ghost px-5 py-3 relative group overflow-hidden">
-                        <span class="font-bold text-body-lg leading-body-lg tracking-tight text-white dark:text-neutral-900 relative z-10">Philosophie</span>
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-orange transition-all duration-300 group-hover:w-full"></span>
+                        <span class="font-bold text-body-lg leading-body-lg tracking-tight text-text-dark relative z-10">Philosophie</span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover:w-full"></span>
                     </button>
-                    <button class="texture-button texture-button-accent px-5 py-3">
-                        <span class="font-bold text-body-lg leading-body-lg tracking-tight text-white">24/7 Notdienst</span>
-                    </button>
+                    <a href="tel:+4915565906604" class="texture-button texture-button-accent px-5 py-3 flex items-center gap-2">
+                        <span class="font-bold text-body-lg leading-body-lg tracking-tight text-white">Jetzt anrufen</span>
+                        <i data-lucide="phone" class="w-4 h-4 text-white"></i>
+                    </a>
                 </div>
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="texture-button texture-button-icon w-10 h-10 group" aria-label="Toggle theme">
-                    <i data-lucide="sun" class="w-5 h-5 text-white dark:text-neutral-400 absolute scale-100 rotate-0 transition-all duration-300 dark:scale-0 dark:-rotate-90"></i>
-                    <i data-lucide="moon" class="w-5 h-5 text-white dark:text-neutral-400 absolute scale-0 rotate-90 transition-all duration-300 dark:scale-100 dark:rotate-0"></i>
-                </button>
             </nav>
 
             <!-- Mobile Navigation -->
             <nav class="flex md:hidden items-center gap-3">
-                <button class="texture-button texture-button-accent px-4 py-2">
-                    <span class="font-bold text-body-mobile leading-body-mobile tracking-tight text-white">24/7 Anrufen</span>
-                </button>
-                <!-- Theme Toggle -->
-                <button id="theme-toggle-mobile" class="texture-button texture-button-icon w-8 h-8 group" aria-label="Toggle theme">
-                    <i data-lucide="sun" class="w-4 h-4 text-white dark:text-neutral-400 absolute scale-100 rotate-0 transition-all duration-300 dark:scale-0 dark:-rotate-90"></i>
-                    <i data-lucide="moon" class="w-4 h-4 text-white dark:text-neutral-400 absolute scale-0 rotate-90 transition-all duration-300 dark:scale-100 dark:rotate-0"></i>
-                </button>
+                <a href="tel:+4915565906604" class="texture-button texture-button-accent px-4 py-2 flex items-center gap-2">
+                    <span class="font-bold text-body-mobile leading-body-mobile tracking-tight text-white">Anrufen</span>
+                    <i data-lucide="phone" class="w-3.5 h-3.5 text-white"></i>
+                </a>
             </nav>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main id="main-content" class="pt-24 md:pt-[190px] px-4 md:px-44 pb-0 w-full overflow-x-hidden">
-        <div class="w-full max-w-full md:max-w-container-content mx-auto flex flex-col gap-16 md:gap-section-gap overflow-x-hidden">
+    <main id="main-content" class="pt-24 md:pt-[160px] px-4 md:px-8 pb-0 w-full overflow-x-hidden">
+        <div class="w-full max-w-container-content mx-auto flex flex-col gap-16 md:gap-section-gap overflow-x-hidden">
             <!-- Hero Section -->
             <section class="hero-section flex flex-col gap-6 md:gap-10">
                 <!-- Status Badge -->
                 <div class="animate-on-scroll stagger-1 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-8">
-                    <div class="bg-status dark:bg-orange-50 border border-bg-status-border dark:border-orange-200 flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full transition-colors duration-300">
-                        <span class="relative flex h-2 w-2">
+                    <div class="bg-status border border-bg-status-border flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full overflow-hidden w-fit">
+                        <span class="relative flex h-2 w-2 shrink-0">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                         </span>
-                        <p class="font-normal text-label leading-label tracking-wide uppercase text-brand-orange whitespace-pre text-[10px] md:text-label">Live Status: Einsatzbereit</p>
+                        <p class="font-normal text-label leading-label tracking-wide uppercase text-brand-primary whitespace-nowrap text-[10px] md:text-label">Live Status: Einsatzbereit</p>
                     </div>
-                    <div class="hidden md:block flex-1 h-px bg-white/10 dark:bg-black/25"></div>
-                    <p class="font-normal text-label leading-label tracking-wide uppercase text-neutral-500 whitespace-pre text-[10px] md:text-label">MÜNCHEN & UMGEBUNG</p>
                 </div>
 
                 <!-- Main Heading -->
                 <div class="animate-on-scroll stagger-2 flex flex-col gap-1 items-start md:items-start">
-                    <h1 class="font-bold text-hero-mobile md:text-hero leading-hero-mobile md:leading-hero tracking-hero text-white dark:text-neutral-900 text-left md:text-left transition-colors duration-300">
+                    <h1 class="font-bold text-hero-mobile md:text-hero leading-hero-mobile md:leading-hero tracking-hero text-text-dark text-left md:text-left">
                         <span class="text-shine">24/7</span><br>
                         <span class="text-shine">Notdienst</span><br>
                         <span class="text-gradient text-shine">in München</span>
@@ -175,14 +142,14 @@
                 </div>
 
                 <!-- Features & CTA -->
-                <div class="animate-on-scroll stagger-3 border-t border-white/10 dark:border-black/25 flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center pt-6 md:pt-12">
+                <div class="animate-on-scroll stagger-3 border-t border-border-subtle flex flex-col md:flex-row gap-6 md:gap-8 items-start md:items-center pt-6 md:pt-12">
                     <!-- Feature 1 -->
                     <div class="flex flex-col gap-2 w-full md:w-86">
                         <div class="flex gap-3 items-center h-7">
-                            <i data-lucide="clock" class="w-4 h-4 md:w-5 md:h-5 shrink-0 text-brand-orange"></i>
-                            <span class="font-bold text-heading-3-mobile md:text-heading-3 leading-heading-3-mobile md:leading-heading-3 text-brand-orange">15-30 Min</span>
+                            <i data-lucide="clock" class="w-4 h-4 md:w-5 md:h-5 shrink-0 text-brand-primary"></i>
+                            <span class="font-bold text-heading-3-mobile md:text-heading-3 leading-heading-3-mobile md:leading-heading-3 text-brand-primary">15-30 Min</span>
                         </div>
-                        <p class="font-light text-body-mobile md:text-body leading-body-mobile md:leading-body text-text-muted dark:text-neutral-500 w-full md:w-70">
+                        <p class="font-light text-body-mobile md:text-body leading-body-mobile md:leading-body text-text-muted w-full md:w-70">
                             Durchschnittliche Ankunftszeit im gesamten Stadtgebiet Münchens.
                         </p>
                     </div>
@@ -190,20 +157,20 @@
                     <!-- Feature 2 -->
                     <div class="flex flex-col gap-2 w-full md:w-86">
                         <div class="flex gap-3 items-center h-7">
-                            <i data-lucide="map-pin" class="w-4 h-4 md:w-5 md:h-5 shrink-0 text-brand-orange"></i>
-                            <span class="font-bold text-heading-3-mobile md:text-heading-3 leading-heading-3-mobile md:leading-heading-3 text-brand-orange">Alle Stadtteile</span>
+                            <i data-lucide="map-pin" class="w-4 h-4 md:w-5 md:h-5 shrink-0 text-brand-primary"></i>
+                            <span class="font-bold text-heading-3-mobile md:text-heading-3 leading-heading-3-mobile md:leading-heading-3 text-brand-primary">Alle Stadtteile</span>
                         </div>
-                        <p class="font-light text-body-mobile md:text-body leading-body-mobile md:leading-body text-text-muted dark:text-neutral-500 w-full md:w-84">
-                            Von Schwabing bis Sendling. Wir sind bereits in Ihrer Nähe. 
+                        <p class="font-light text-body-mobile md:text-body leading-body-mobile md:leading-body text-text-muted w-full md:w-84">
+                            Ob Innenstadt, Norden, Osten, Westen oder Süden - wir erreichen Sie in ganz München in wenigen Minuten.
                         </p>
                     </div>
 
                     <!-- CTA Button -->
                     <div class="flex flex-col gap-3 md:gap-4 items-start md:items-end w-full md:w-86 md:h-23">
-                        <button class="texture-button texture-button-accent w-full md:w-52 h-12 md:h-17 flex items-center justify-center gap-2">
+                        <a href="tel:+4915565906604" class="texture-button texture-button-accent w-full md:w-52 h-12 md:h-17 flex items-center justify-center gap-2">
                             <span class="font-bold text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-white">Jetzt anrufen</span>
                             <i data-lucide="phone" class="w-4 h-4 md:w-5 md:h-5 text-white"></i>
-                        </button>
+                        </a>
                         <p class="font-normal text-body-mobile md:text-body leading-body-mobile md:leading-body text-neutral-500 text-left md:text-right">
                             Festpreisgarantie vor Ort.
                         </p>
@@ -211,24 +178,24 @@
                 </div>
 
                 <!-- Stats Section -->
-                <div class="animate-on-scroll stagger-4 md:border-t md:border-b border-white/10 dark:border-black/25 pt-8 md:pt-12 pb-6 md:pb-12 relative">
-                    <div class="absolute inset-0 texture-overlay-grid opacity-20"></div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-0 relative z-10">
-                        <div class="animate-on-scroll stagger-1 flex flex-col gap-2 md:gap-4 items-center py-0 pb-4 md:pb-0">
-                            <p class="stat-number font-bold text-3xl md:text-5xl leading-3xl md:leading-5xl tracking-tighter text-white dark:text-neutral-900" data-target="15" data-suffix="m">0</p>
-                            <p class="font-medium text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-wide uppercase text-neutral-500 text-center">Ø Ankunftszeit</p>
+                <div class="animate-on-scroll stagger-4 border border-border-subtle pt-8 md:pt-10 pb-8 md:pb-10 px-4 md:px-8 relative bg-gradient-to-b from-white to-brand-light-alt rounded-card overflow-hidden card-hover">
+                    <div class="absolute inset-0 texture-overlay-grid opacity-10"></div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 relative z-10">
+                        <div class="animate-on-scroll stagger-1 flex flex-col gap-2 items-center text-center">
+                            <p class="stat-number font-bold text-3xl md:text-5xl leading-none tracking-tighter text-text-dark" data-target="15" data-suffix="m">0</p>
+                            <p class="font-medium text-[10px] md:text-xs leading-tight tracking-widest uppercase text-neutral-400">Ø Ankunftszeit</p>
                         </div>
-                        <div class="animate-on-scroll stagger-2 flex flex-col gap-2 md:gap-4 items-center py-0 pb-4 md:pb-0">
-                            <p class="stat-number font-bold text-3xl md:text-5xl leading-3xl md:leading-5xl tracking-tighter text-white dark:text-neutral-900" data-target="24" data-suffix="/7">0</p>
-                            <p class="font-medium text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-wide uppercase text-neutral-500 text-center">Erreichbarkeit</p>
+                        <div class="animate-on-scroll stagger-2 flex flex-col gap-2 items-center text-center">
+                            <p class="stat-number font-bold text-3xl md:text-5xl leading-none tracking-tighter text-text-dark" data-target="24" data-suffix="/7">0</p>
+                            <p class="font-medium text-[10px] md:text-xs leading-tight tracking-widest uppercase text-neutral-400">Erreichbarkeit</p>
                         </div>
-                        <div class="animate-on-scroll stagger-3 flex flex-col gap-2 md:gap-4 items-center py-0">
-                            <p class="stat-number font-bold text-3xl md:text-5xl leading-3xl md:leading-5xl tracking-tighter text-white dark:text-neutral-900" data-target="5000" data-suffix="+">0</p>
-                            <p class="font-medium text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-wide uppercase text-neutral-500 text-center">Öffnungen</p>
+                        <div class="animate-on-scroll stagger-3 flex flex-col gap-2 items-center text-center">
+                            <p class="stat-number font-bold text-3xl md:text-5xl leading-none tracking-tighter text-text-dark" data-target="5000" data-suffix="+">0</p>
+                            <p class="font-medium text-[10px] md:text-xs leading-tight tracking-widest uppercase text-neutral-400">Öffnungen</p>
                         </div>
-                        <div class="animate-on-scroll stagger-4 flex flex-col gap-2 md:gap-4 items-center py-0">
-                            <p class="stat-number font-bold text-3xl md:text-5xl leading-3xl md:leading-5xl tracking-tighter text-white dark:text-neutral-900" data-target="100" data-suffix="%">0</p>
-                            <p class="font-medium text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-wide uppercase text-neutral-500 text-center">Kundenzufriedenheit</p>
+                        <div class="animate-on-scroll stagger-4 flex flex-col gap-2 items-center text-center">
+                            <p class="stat-number font-bold text-3xl md:text-5xl leading-none tracking-tighter text-text-dark" data-target="100" data-suffix="%">0</p>
+                            <p class="font-medium text-[10px] md:text-xs leading-tight tracking-widest uppercase text-neutral-400">Kundenzufriedenheit</p>
                         </div>
                     </div>
                 </div>
@@ -237,348 +204,284 @@
             
 
             <!-- Services Section -->
-            <section id="services" class="flex flex-col gap-6 md:gap-10 scroll-mt-[120px] md:scroll-mt-[140px]">
+            <section id="services" class="flex flex-col gap-8 md:gap-12 scroll-mt-[120px] md:scroll-mt-[140px]">
                 <div class="animate-on-scroll stagger-1 flex flex-col gap-3 md:gap-4">
-                    <p class="font-normal text-label leading-label tracking-wide uppercase text-brand-orange">// Unsere Leistungen</p>
-                    <h2 class="font-bold text-heading-1-mobile md:text-heading-1 leading-heading-1-mobile md:leading-heading-1 tracking-tight text-white dark:text-neutral-900">Wenn jede Sekunde, zählt.</h2>
+                    <p class="font-medium text-xs md:text-label leading-label tracking-widest uppercase text-brand-primary">// Unsere Leistungen</p>
+                    <h2 class="font-bold text-heading-1-mobile md:text-heading-1 leading-heading-1-mobile md:leading-heading-1 tracking-tight text-text-dark">Wenn jede Sekunde zählt.</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 md:h-[730px]">
-                    <!-- Large Card - Top Left -->
-                    <div class="animate-on-scroll stagger-2 bg-neutral-900 md:row-span-2 rounded-card overflow-hidden relative h-[380px] md:h-auto cult-card-shadow service-card-hover">
-                        <div class="absolute inset-0 opacity-50 image-container">
-                            <img src="./assets/15ffa5c66d5c47a0d16bdf05521358f3f6587a2e.png" alt="Service" class="w-full h-full object-cover" loading="lazy" decoding="async" fetchpriority="low">
-                            <div class="texture-overlay-dots"></div>
-                        </div>
-                        <div class="absolute inset-0 flex flex-col justify-between p-5 md:p-8">
-                            <div class="flex items-center justify-between">
-                                <div class="texture-button texture-button-icon w-10 h-10 md:w-12 md:h-12">
-                                    <i data-lucide="key" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
-                                </div>
-                                <i data-lucide="arrow-right" class="arrow-slide w-5 h-5 md:w-6 md:h-6 text-white"></i>
+                <!-- Services Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Card 1 - Türöffnung (Image Card) -->
+                    <article class="animate-on-scroll stagger-2 group relative isolate h-80 md:h-96 rounded-3xl clip-content border border-neutral-200 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        <img src="./assets/15ffa5c66d5c47a0d16bdf05521358f3f6587a2e.png" alt="Türöffnung Service" class="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                        <div class="relative h-full flex flex-col justify-between p-6 md:p-8">
+                            <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                <i data-lucide="key" class="w-5 h-5 text-white"></i>
                             </div>
                             <div class="flex flex-col gap-2">
-                                <p class="font-normal text-label leading-label tracking-wide uppercase text-white">Türöffnung</p>
-                                <h3 class="font-bold text-heading-2-mobile md:text-heading-1 leading-heading-2-mobile md:leading-heading-1 tracking-tight text-white">Sofort-Hilfe</h3>
-                                <p class="font-normal text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-tight text-white">
-                                    Zerstörungsfreie Öffnung zu 99%. Festpreisgarantie.
-                                </p>
+                                <span class="text-xs font-semibold tracking-widest uppercase text-white/70">Türöffnung</span>
+                                <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-white">Sofort-Hilfe</h3>
+                                <p class="text-sm text-white/80 leading-relaxed max-w-sm">Zerstörungsfreie Öffnung zu 99%. Festpreisgarantie vor Ort.</p>
                             </div>
                         </div>
-                    </div>
+                    </article>
 
-                    <!-- Orange Card - Top Right -->
-                    <div class="animate-on-scroll stagger-3 bg-brand-orange-dark rounded-card p-5 md:p-8 flex flex-col justify-between h-[160px] md:h-auto cult-card-shadow service-card-hover relative overflow-hidden">
-                        <div class="texture-overlay-grid"></div>
-                        <div class="flex items-center justify-between relative z-10">
-                            <div class="bg-white/10 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center cult-border">
-                                <i data-lucide="clock" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
+                    <!-- Card 2 - Express (Solid Color Card) -->
+                    <article class="animate-on-scroll stagger-3 group relative isolate h-80 md:h-96 rounded-3xl clip-content bg-brand-primary cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        <div class="relative h-full flex flex-col justify-between p-6 md:p-8">
+                            <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                <i data-lucide="clock" class="w-5 h-5 text-white"></i>
                             </div>
-                            <i data-lucide="arrow-right" class="arrow-slide w-5 h-5 md:w-6 md:h-6 text-black"></i>
+                            <div class="flex flex-col gap-2">
+                                <span class="text-xs font-semibold tracking-widest uppercase text-white/70">Express</span>
+                                <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-white">Anfahrt in 15-30 Min</h3>
+                                <p class="text-sm text-white/80 leading-relaxed max-w-sm">Maximale Wartezeit von 30 Minuten garantiert im gesamten Stadtgebiet.</p>
+                            </div>
                         </div>
-                        <div class="flex flex-col gap-2 relative z-10">
-                            <p class="font-normal text-label leading-label tracking-wide uppercase text-black opacity-70">Express</p>
-                            <h3 class="font-bold text-heading-3-mobile md:text-heading-2 leading-heading-3-mobile md:leading-heading-2 tracking-tight text-black">Anfahrt</h3>
-                            <p class="font-normal text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-tight text-black opacity-70">
-                                Max. 30 Min Wartezeit.
-                            </p>
-                        </div>
-                    </div>
+                    </article>
 
-                    <!-- White Card - Top Right -->
-                    <div class="animate-on-scroll stagger-4 bg-white rounded-card p-5 md:p-8 flex flex-col justify-between h-[160px] md:h-auto cult-card-shadow service-card-hover relative overflow-hidden">
-                        <div class="texture-overlay-noise"></div>
-                        <div class="flex items-center justify-between relative z-10">
-                            <div class="bg-neutral-100 rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center cult-border">
-                                <i data-lucide="shield-check" class="w-5 h-5 md:w-6 md:h-6 text-black"></i>
+                    <!-- Card 3 - Sicherheit (Light Card) -->
+                    <article class="animate-on-scroll stagger-4 group relative isolate h-80 md:h-96 rounded-3xl clip-content bg-white border border-neutral-200 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        <div class="relative h-full flex flex-col justify-between p-6 md:p-8">
+                            <div class="w-12 h-12 rounded-xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-brand-primary"></i>
                             </div>
-                            <i data-lucide="arrow-right" class="arrow-slide w-5 h-5 md:w-6 md:h-6 text-black"></i>
+                            <div class="flex flex-col gap-2">
+                                <span class="text-xs font-semibold tracking-widest uppercase text-brand-primary">Nachrüstung</span>
+                                <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-text-dark">Sicherheit</h3>
+                                <p class="text-sm text-text-muted leading-relaxed max-w-sm">Neue Schlösser & Schutzbeschläge professionell montiert.</p>
+                            </div>
                         </div>
-                        <div class="flex flex-col gap-2 text-black relative z-10">
-                            <p class="font-normal text-label leading-label tracking-wide uppercase">Nachrüstung</p>
-                            <h3 class="font-bold text-heading-3-mobile md:text-heading-2 leading-heading-3-mobile md:leading-heading-2 tracking-tight">Sicherheit</h3>
-                            <p class="font-normal text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-tight">
-                                Panzerriegel & Kameras.
-                            </p>
-                        </div>
-                    </div>
+                    </article>
 
-                    <!-- Map Card - Bottom Right -->
-                    <div class="animate-on-scroll stagger-5 md:col-span-2 rounded-card overflow-hidden relative h-[450px] md:h-auto cult-card-shadow service-card-hover">
-                        <iframe src="https://snazzymaps.com/embed/757909" width="100%" height="100%" style="border:none;" class="absolute inset-0 w-full h-full rounded-card" loading="lazy" title="München Karte"></iframe>
-                        <div class="absolute inset-0 pointer-events-none flex flex-col justify-between p-5 md:p-8 z-10">
-                            <div class="flex items-center justify-between">
-                                <div class="texture-button texture-button-icon w-10 h-10 md:w-12 md:h-12 pointer-events-auto">
-                                    <i data-lucide="map" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
-                                </div>
-                                <i data-lucide="arrow-right" class="arrow-slide w-5 h-5 md:w-6 md:h-6 text-white"></i>
+                    <!-- Card 4 - Map -->
+                    <article class="animate-on-scroll stagger-5 group relative isolate h-80 md:h-96 rounded-3xl clip-content border border-neutral-200 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86512.83419516498!2d11.48054839726562!3d48.15428820000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f9a38c5fd9%3A0x10cb84a7db1987d!2sMunich!5e0!3m2!1sen!2sde!4v1704067200000!5m2!1sen!2sde" width="100%" height="100%" style="border:none;filter:grayscale(100%) contrast(1.1);" class="absolute inset-0 w-full h-full pointer-events-none" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="München Karte"></iframe>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none"></div>
+                        <div class="relative h-full flex flex-col justify-between p-6 md:p-8 pointer-events-none">
+                            <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-white"></i>
                             </div>
-                            <div class="flex flex-col gap-2 text-white">
-                                <p class="font-normal text-label leading-label tracking-wide uppercase">München</p>
-                                <h3 class="font-bold text-heading-2-mobile md:text-heading-1 leading-heading-2-mobile md:leading-heading-1 tracking-tight">Einsatzgebiet</h3>
-                                <p class="font-normal text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-tight">
-                                    Alle Postleitzahlen.
-                                </p>
+                            <div class="flex flex-col gap-2">
+                                <span class="text-xs font-semibold tracking-widest uppercase text-white/70">München</span>
+                                <h3 class="text-2xl md:text-3xl font-bold tracking-tight text-white">Einsatzgebiet</h3>
+                                <p class="text-sm text-white/80 leading-relaxed max-w-sm">Alle Postleitzahlen abgedeckt.</p>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
             <!-- Team Section -->
-            <section class="flex flex-col gap-6 md:gap-10">
+            <section class="flex flex-col gap-8 md:gap-12">
                 <div class="animate-on-scroll stagger-1 flex flex-col gap-3 md:gap-4 items-center text-center">
-                    <p class="font-normal text-label leading-label tracking-wide uppercase text-neutral-500">Unser Team</p>
-                    <h2 class="font-bold text-heading-1-mobile md:text-5xl leading-heading-1-mobile md:leading-5xl tracking-tight text-white dark:text-black">
-                        Gesichter hinter Ihrer <span class="text-brand-orange">Sicherheit.</span>
+                    <p class="font-medium text-xs md:text-label leading-label tracking-widest uppercase text-brand-primary">// Ihr Ansprechpartner</p>
+                    <h2 class="font-bold text-heading-1-mobile md:text-5xl leading-heading-1-mobile md:leading-5xl tracking-tight text-text-dark">
+                        Das Gesicht hinter Ihrer <span class="text-brand-primary">Sicherheit.</span>
                     </h2>
                 </div>
 
-                <!-- Mobile Swiper -->
-                <div class="md:hidden w-full">
-                    <div class="swiper team-swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="flex flex-col gap-4 items-center w-full px-4">
-                                    <div class="h-64 w-full rounded-card-sm overflow-hidden bg-neutral-100 image-container cult-card-shadow relative">
-                                        <img src="./assets/8916fd1352e6d719e7df5f52b28f562225b09e8d.png" alt="Thomas Müller" class="w-full h-full object-cover" loading="lazy" decoding="async" width="390" height="256">
-                                        <div class="texture-overlay-dots"></div>
-                                    </div>
-                                    <p class="font-medium text-heading-3-mobile leading-heading-3-mobile tracking-tight text-center text-white dark:text-black">Thomas Müller</p>
-                                    <p class="font-normal text-body-sm-mobile leading-body-sm-mobile tracking-wide uppercase text-neutral-500">Meister</p>
-                                </div>
+                <!-- Team Card - Unified Layout -->
+                <div class="animate-on-scroll stagger-2 w-full max-w-3xl mx-auto card-hover">
+                    <div class="bg-white border border-neutral-200 rounded-card overflow-hidden">
+                        <div class="flex flex-col md:flex-row">
+                            <!-- Image Container -->
+                            <div class="w-full md:w-1/2 aspect-square md:aspect-auto bg-neutral-100 flex-shrink-0 overflow-hidden">
+                                <img src="./assets/semih.jpeg" alt="Semih Turan" class="w-full h-full object-cover" loading="lazy" decoding="async">
                             </div>
-                            <div class="swiper-slide">
-                                <div class="flex flex-col gap-4 items-center w-full px-4">
-                                    <div class="h-64 w-full rounded-card-sm overflow-hidden bg-neutral-100 image-container cult-card-shadow relative">
-                                        <img src="./assets/75744a74f30bbd3d0cbdefc9235c34f8a2b409ec.png" alt="Jan Meyer" class="w-full h-full object-cover" loading="lazy" decoding="async" width="390" height="256">
-                                        <div class="texture-overlay-dots"></div>
-                                    </div>
-                                    <p class="font-medium text-heading-3-mobile leading-heading-3-mobile tracking-tight text-center text-white dark:text-black">Jan Meyer</p>
-                                    <p class="font-normal text-body-sm-mobile leading-body-sm-mobile tracking-wide uppercase text-neutral-500">Sicherheit</p>
+                            <!-- Info -->
+                            <div class="flex flex-col gap-4 p-6 md:p-10 text-center md:text-left flex-1 justify-center">
+                                <div class="flex flex-col gap-1">
+                                    <h3 class="font-bold text-2xl md:text-3xl tracking-tight text-text-dark">Semih Turan</h3>
+                                    <p class="font-semibold text-xs tracking-widest uppercase text-brand-primary">Inhaber</p>
                                 </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="flex flex-col gap-4 items-center w-full px-4">
-                                    <div class="h-64 w-full rounded-card-sm overflow-hidden bg-neutral-100 image-container cult-card-shadow relative">
-                                        <img src="./assets/5dd3c1ef3a3c152823dd63e572fb360a618e0229.png" alt="Alex Kurz" class="w-full h-full object-cover" loading="lazy" decoding="async" width="390" height="256">
-                                        <div class="texture-overlay-dots"></div>
-                                    </div>
-                                    <p class="font-medium text-heading-3-mobile leading-heading-3-mobile tracking-tight text-center text-white dark:text-black">Alex Kurz</p>
-                                    <p class="font-normal text-body-sm-mobile leading-body-sm-mobile tracking-wide uppercase text-neutral-500">Notdienst</p>
+                                <p class="font-normal text-sm md:text-base leading-relaxed text-text-muted">
+                                    Mit jahrelanger Erfahrung im Schlüsseldienst steht Semih Turan für Zuverlässigkeit und Präzision. Seine Expertise in zerstörungsfreien Öffnungstechniken garantiert schnelle Hilfe, wenn Sie sie am dringendsten brauchen.
+                                </p>
+                                <div class="flex flex-wrap gap-2 justify-center md:justify-start mt-2">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-primary/5 border border-brand-primary/10 rounded-full text-xs font-medium text-brand-primary">
+                                        <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                                        Geprüfter Fachbetrieb
+                                    </span>
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-primary/5 border border-brand-primary/10 rounded-full text-xs font-medium text-brand-primary">
+                                        <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                                        24/7 Verfügbar
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <!-- Pagination dots -->
-                        <div class="swiper-pagination team-pagination"></div>
-                    </div>
-                </div>
-
-                <!-- Desktop Layout -->
-                <div class="hidden md:flex flex-row items-center justify-between gap-0">
-                    <div class="animate-on-scroll stagger-2 flex flex-col gap-5 items-center w-64">
-                        <div class="h-60 w-full rounded-card-sm overflow-hidden bg-neutral-100 image-container cult-card-shadow relative card-hover card-tilt">
-                            <img src="./assets/8916fd1352e6d719e7df5f52b28f562225b09e8d.png" alt="Thomas Müller" class="w-full h-full object-cover" loading="lazy" decoding="async" width="256" height="240">
-                            <div class="texture-overlay-dots"></div>
-                        </div>
-                        <p class="font-medium text-heading-2 leading-heading-2 tracking-tight text-center text-white dark:text-black">Thomas Müller</p>
-                        <p class="font-normal text-body-sm leading-body-sm tracking-wide uppercase text-neutral-500">Meister</p>
-                    </div>
-
-                    <div class="animate-on-scroll stagger-3 flex flex-col gap-5 items-center w-64">
-                        <div class="h-60 w-full rounded-card-sm overflow-hidden bg-neutral-100 image-container cult-card-shadow relative card-hover card-tilt">
-                            <img src="./assets/75744a74f30bbd3d0cbdefc9235c34f8a2b409ec.png" alt="Jan Meyer" class="w-full h-full object-cover" loading="lazy" decoding="async" width="256" height="240">
-                            <div class="texture-overlay-dots"></div>
-                        </div>
-                        <p class="font-medium text-heading-2 leading-heading-2 tracking-tight text-center text-white dark:text-black">Jan Meyer</p>
-                        <p class="font-normal text-body-sm leading-body-sm tracking-wide uppercase text-neutral-500">Sicherheit</p>
-                    </div>
-
-                    <div class="animate-on-scroll stagger-4 flex flex-col gap-5 items-center w-64">
-                        <div class="h-60 w-full rounded-card-sm overflow-hidden bg-neutral-100 image-container cult-card-shadow relative card-hover card-tilt">
-                            <img src="./assets/5dd3c1ef3a3c152823dd63e572fb360a618e0229.png" alt="Alex Kurz" class="w-full h-full object-cover" loading="lazy" decoding="async" width="256" height="240">
-                            <div class="texture-overlay-dots"></div>
-                        </div>
-                        <p class="font-medium text-heading-2 leading-heading-2 tracking-tight text-center text-white dark:text-black">Alex Kurz</p>
-                        <p class="font-normal text-body-sm leading-body-sm tracking-wide uppercase text-neutral-500">Notdienst</p>
                     </div>
                 </div>
             </section>
 
             <!-- Philosophy Section -->
-            <section id="philosophy" class="flex flex-col gap-6 md:gap-9 scroll-mt-[120px] md:scroll-mt-[140px]">
-                <p class="animate-on-scroll stagger-1 font-normal text-label leading-label tracking-wide uppercase text-brand-orange">// Unsere Philosophie</p>
-                
-                <div class="flex flex-col gap-8 md:gap-17">
-                    <p id="philosophy-heading" class="animate-on-scroll stagger-2 font-semibold text-display-mobile md:text-display leading-display-mobile md:leading-display tracking-tight text-white dark:text-black typewriter-text">
-                        <span class="typewriter-words"></span>
+            <section id="philosophy" class="flex flex-col gap-8 md:gap-12 scroll-mt-[120px] md:scroll-mt-[140px]">
+                <div class="flex flex-col gap-3 md:gap-4">
+                    <p class="animate-on-scroll stagger-1 font-medium text-xs md:text-label leading-label tracking-widest uppercase text-brand-primary">// Unsere Philosophie</p>
+                    <p id="philosophy-heading" class="animate-on-scroll stagger-2 font-semibold text-2xl md:text-4xl leading-tight tracking-tight text-text-dark max-w-3xl typewriter-text">
+                        <span class="typewriter-words">Wenn Sie vor verschlossener Tür stehen, zählt jede Minute.</span>
                     </p>
+                </div>
 
-                    <div class="philosophy-cards-container flex flex-col md:flex-row items-start justify-between gap-8 md:gap-0 relative">
-                        <div class="animate-on-scroll stagger-1 flex flex-col gap-4 md:gap-5 w-full md:w-52 philosophy-card">
-                            <div class="bg-brand-orange rounded-full w-10 h-10 md:w-11 md:h-11 flex items-center justify-center relative overflow-hidden cult-card-shadow">
-                                <div class="texture-overlay-noise"></div>
-                                <i data-lucide="target" class="w-5 h-5 md:w-6 md:h-6 text-white relative z-10"></i>
-                            </div>
-                            <div class="flex flex-col gap-1">
-                                <p class="font-bold text-xl md:text-2xl leading-6 md:leading-7 tracking-tight text-white/25 dark:text-black/25">01</p>
-                                <p class="font-bold text-xl md:text-2xl leading-6 md:leading-7 tracking-tight text-white dark:text-black">Präzision</p>
-                            </div>
-                            <p class="font-light text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-7 tracking-tight text-text-muted dark:text-text-muted">
-                                Zerstörungsfreie Öffnungstechniken. Wir schützen Ihr Eigentum und arbeiten millimetergenau.
-                            </p>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5 philosophy-cards-container">
+                    <div class="animate-on-scroll stagger-1 bg-white border border-neutral-200 rounded-card p-5 md:p-6 flex flex-col gap-4 philosophy-card">
+                        <div class="bg-brand-primary rounded-xl w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+                            <i data-lucide="target" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                         </div>
+                        <div class="flex flex-col gap-1">
+                            <p class="font-medium text-sm text-neutral-400">01</p>
+                            <p class="font-bold text-lg md:text-xl tracking-tight text-text-dark">Präzision</p>
+                        </div>
+                        <p class="font-normal text-sm leading-relaxed text-text-muted">
+                            Zerstörungsfreie Öffnungstechniken. Wir schützen Ihr Eigentum.
+                        </p>
+                    </div>
 
-                        <div class="animate-on-scroll stagger-2 flex flex-col gap-4 md:gap-5 w-full md:w-52 philosophy-card">
-                            <div class="bg-brand-orange rounded-full w-10 h-10 md:w-11 md:h-11 flex items-center justify-center relative overflow-hidden cult-card-shadow">
-                                <div class="texture-overlay-noise"></div>
-                                <i data-lucide="zap" class="w-5 h-5 md:w-6 md:h-6 text-white relative z-10"></i>
-                            </div>
-                            <div class="flex flex-col gap-1">
-                                <p class="font-bold text-xl md:text-2xl leading-6 md:leading-7 tracking-tight text-white/25 dark:text-black/25">02</p>
-                                <p class="font-bold text-xl md:text-2xl leading-6 md:leading-7 tracking-tight text-white dark:text-black">Schnelligkeit</p>
-                            </div>
-                            <p class="font-light text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-7 tracking-tight text-text-muted dark:text-text-muted">
-                                15-30 Minuten Ankunftszeit in ganz München. 24/7 Notdienst, wenn Sie uns am dringendsten brauchen.
-                            </p>
+                    <div class="animate-on-scroll stagger-2 bg-white border border-neutral-200 rounded-card p-5 md:p-6 flex flex-col gap-4 philosophy-card">
+                        <div class="bg-brand-primary rounded-xl w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+                            <i data-lucide="zap" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                         </div>
+                        <div class="flex flex-col gap-1">
+                            <p class="font-medium text-sm text-neutral-400">02</p>
+                            <p class="font-bold text-lg md:text-xl tracking-tight text-text-dark">Schnelligkeit</p>
+                        </div>
+                        <p class="font-normal text-sm leading-relaxed text-text-muted">
+                            15-30 Minuten Ankunftszeit in ganz München.
+                        </p>
+                    </div>
 
-                        <div class="animate-on-scroll stagger-3 flex flex-col gap-4 md:gap-5 w-full md:w-52 philosophy-card">
-                            <div class="bg-brand-orange rounded-full w-10 h-10 md:w-11 md:h-11 flex items-center justify-center relative overflow-hidden cult-card-shadow">
-                                <div class="texture-overlay-noise"></div>
-                                <i data-lucide="shield-check" class="w-5 h-5 md:w-6 md:h-6 text-white relative z-10"></i>
-                            </div>
-                            <div class="flex flex-col gap-1">
-                                <p class="font-bold text-xl md:text-2xl leading-6 md:leading-7 tracking-tight text-white/25 dark:text-black/25">03</p>
-                                <p class="font-bold text-xl md:text-2xl leading-6 md:leading-7 tracking-tight text-white dark:text-black">Vertrauen</p>
-                            </div>
-                            <p class="font-light text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-7 tracking-tight text-text-muted dark:text-text-muted">
-                                Geprüfte Meisterbetriebe mit langjähriger Erfahrung. Ihre Sicherheit ist unser Versprechen.
-                            </p>
+                    <div class="animate-on-scroll stagger-3 bg-white border border-neutral-200 rounded-card p-5 md:p-6 flex flex-col gap-4 philosophy-card">
+                        <div class="bg-brand-primary rounded-xl w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+                            <i data-lucide="shield-check" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                         </div>
+                        <div class="flex flex-col gap-1">
+                            <p class="font-medium text-sm text-neutral-400">03</p>
+                            <p class="font-bold text-lg md:text-xl tracking-tight text-text-dark">Vertrauen</p>
+                        </div>
+                        <p class="font-normal text-sm leading-relaxed text-text-muted">
+                            Erfahrener Fachbetrieb mit jahrelanger Expertise.
+                        </p>
+                    </div>
 
-                        <div class="animate-on-scroll stagger-4 flex flex-col gap-4 md:gap-5 w-full md:w-52 philosophy-card">
-                            <div class="bg-brand-orange rounded-full w-10 h-10 md:w-11 md:h-11 flex items-center justify-center relative overflow-hidden cult-card-shadow">
-                                <div class="texture-overlay-noise"></div>
-                                <i data-lucide="clock" class="w-5 h-5 md:w-6 md:h-6 text-white relative z-10"></i>
-                            </div>
-                            <div class="flex flex-col gap-1">
-                                <p class="font-bold text-xl md:text-2xl leading-6 md:leading-7 tracking-tight text-white/25 dark:text-black/25">04</p>
-                                <p class="font-bold text-xl md:text-2xl leading-6 md:leading-7 tracking-tight text-white dark:text-black">Verfügbarkeit</p>
-                            </div>
-                            <p class="font-light text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-7 tracking-tight text-text-muted dark:text-text-muted">
-                                Rund um die Uhr erreichbar. Keine Wartezeiten, keine Ausreden – nur zuverlässiger Service.
-                            </p>
+                    <div class="animate-on-scroll stagger-4 bg-white border border-neutral-200 rounded-card p-5 md:p-6 flex flex-col gap-4 philosophy-card">
+                        <div class="bg-brand-primary rounded-xl w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
+                            <i data-lucide="clock" class="w-5 h-5 md:w-6 md:h-6 text-white"></i>
                         </div>
+                        <div class="flex flex-col gap-1">
+                            <p class="font-medium text-sm text-neutral-400">04</p>
+                            <p class="font-bold text-lg md:text-xl tracking-tight text-text-dark">Verfügbarkeit</p>
+                        </div>
+                        <p class="font-normal text-sm leading-relaxed text-text-muted">
+                            Rund um die Uhr erreichbar. 24/7 Notdienst.
+                        </p>
                     </div>
                 </div>
             </section>
 
             <!-- Contact Form Section -->
-            <section class="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-0">
-                <div class="animate-on-scroll stagger-1 flex flex-col gap-4 md:gap-5 w-full md:w-[27.375rem] py-2">
-                    <p class="font-normal text-label leading-label tracking-wide uppercase text-neutral-500">Kontakt</p>
-                    <h2 class="font-semibold text-display-mobile md:text-display leading-display-mobile md:leading-display tracking-tight text-white dark:text-black">
-                        Sprechen wir über <span class="text-brand-orange">Ihre Sicherheit</span>
-                    </h2>
-                    <p class="font-light text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-text-muted dark:text-text-muted">
-                        Füllen Sie das Formular aus oder rufen Sie uns direkt an. Wir melden uns innerhalb von 2 Stunden bei Ihnen.
-                    </p>
-                </div>
-
-                <form id="contact-form" class="animate-on-scroll stagger-2 flex flex-col gap-10 md:gap-12 w-full md:w-[27.375rem]">
-                    <div class="flex flex-col gap-10 md:gap-12">
-                        <div class="floating-label-group flex flex-col gap-2 relative">
-                            <input type="text" id="name" name="name" placeholder=" " class="font-normal text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-white dark:text-neutral-900 placeholder-transparent bg-transparent w-full pb-3 pt-1" required>
-                            <label for="name" class="font-normal text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-neutral-500 absolute left-0 top-0 pointer-events-none transition-all duration-300">Ihr Name</label>
-                            <div class="absolute bottom-0 left-0 bg-white/10 dark:bg-black/25 h-px w-full transition-all duration-300"></div>
-                        </div>
-                        <div class="floating-label-group flex flex-col gap-2 relative">
-                            <input type="email" id="email" name="email" placeholder=" " class="font-normal text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-white dark:text-neutral-900 placeholder-transparent bg-transparent w-full pb-3 pt-1" required>
-                            <label for="email" class="font-normal text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-neutral-500 absolute left-0 top-0 pointer-events-none transition-all duration-300">E-Mail Adresse</label>
-                            <div class="absolute bottom-0 left-0 bg-white/10 dark:bg-black/25 h-px w-full transition-all duration-300"></div>
-                        </div>
-                        <div class="floating-label-group flex flex-col gap-2 relative">
-                            <textarea id="message" name="message" placeholder=" " rows="4" class="font-normal text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-white dark:text-neutral-900 placeholder-transparent resize-none bg-transparent w-full pb-3 pt-1 min-h-[100px]" required></textarea>
-                            <label for="message" class="font-normal text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-neutral-500 absolute left-0 top-0 pointer-events-none transition-all duration-300">Nachricht</label>
-                            <div class="absolute bottom-0 left-0 bg-white/10 dark:bg-black/25 h-px w-full transition-all duration-300"></div>
+            <section class="bg-neutral-50 border border-neutral-200 rounded-card p-6 md:p-12 overflow-hidden">
+                <div class="flex flex-col md:flex-row items-start justify-between gap-8 md:gap-16">
+                    <div class="animate-on-scroll stagger-1 flex flex-col gap-4 md:gap-5 w-full md:w-[24rem]">
+                        <p class="font-medium text-xs md:text-label leading-label tracking-widest uppercase text-brand-primary">// Kontakt</p>
+                        <h2 class="font-semibold text-2xl md:text-3xl leading-tight tracking-tight text-text-dark">
+                            Sprechen wir über Ihre Sicherheit
+                        </h2>
+                        <p class="font-normal text-sm md:text-base leading-relaxed text-text-muted">
+                            Füllen Sie das Formular aus oder rufen Sie uns direkt an. Wir melden uns innerhalb von 2 Stunden bei Ihnen.
+                        </p>
+                        <div class="flex flex-col gap-3 mt-2">
+                            <a href="tel:+4915565906604" class="flex items-center gap-3 text-text-dark hover:text-brand-primary transition-colors">
+                                <i data-lucide="phone" class="w-4 h-4 text-brand-primary"></i>
+                                <span class="font-medium text-sm">0155 659 066 04</span>
+                            </a>
+                            <a href="mailto:info@schluesseldienst-turan.de" class="flex items-center gap-3 text-text-dark hover:text-brand-primary transition-colors">
+                                <i data-lucide="mail" class="w-4 h-4 text-brand-primary"></i>
+                                <span class="font-medium text-sm">info@schluesseldienst-turan.de</span>
+                            </a>
                         </div>
                     </div>
 
-                    <button type="submit" class="ripple texture-button texture-button-primary w-full h-14 md:h-16 flex items-center justify-center gap-3 md:gap-4 px-6 md:px-8 rounded-full font-semibold text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]" aria-label="Formular absenden">
-                        <span class="text-white">Absenden</span>
-                        <i data-lucide="send" class="w-4 h-4 md:w-5 md:h-5 text-white" aria-hidden="true"></i>
-                    </button>
-                </form>
+                    <form id="contact-form" class="animate-on-scroll stagger-2 flex flex-col gap-6 w-full md:w-[32rem] bg-white border border-neutral-200 rounded-card p-6 md:p-8">
+                        <div class="flex flex-col gap-5">
+                            <div class="flex flex-col gap-2">
+                                <label for="name" class="font-medium text-sm text-text-dark">Ihr Name</label>
+                                <input type="text" id="name" name="name" placeholder="Max Mustermann" class="font-normal text-sm text-text-dark placeholder-neutral-400 bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 w-full focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" required>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="email" class="font-medium text-sm text-text-dark">E-Mail Adresse</label>
+                                <input type="email" id="email" name="email" placeholder="max@beispiel.de" class="font-normal text-sm text-text-dark placeholder-neutral-400 bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 w-full focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" required>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label for="message" class="font-medium text-sm text-text-dark">Nachricht</label>
+                                <textarea id="message" name="message" placeholder="Ihre Nachricht..." rows="4" class="font-normal text-sm text-text-dark placeholder-neutral-400 bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 w-full resize-none focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" required></textarea>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="texture-button texture-button-primary w-full h-12 md:h-14 flex items-center justify-center gap-2 rounded-xl font-semibold text-sm md:text-base transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]" aria-label="Formular absenden">
+                            <span class="text-white">Absenden</span>
+                            <i data-lucide="send" class="w-4 h-4 text-white" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
             </section>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-neutral-950 border-t border-white/10 mt-16 md:mt-30 pt-10 md:pt-20 px-4 md:px-16 pb-0">
-        <div class="max-w-mobile md:max-w-container-content mx-auto flex flex-col gap-12 md:gap-24">
+    <footer class="bg-brand-primary-dark mt-16 md:mt-24 pt-10 md:pt-16 pb-6 md:pb-8 px-4 md:px-16">
+        <div class="max-w-mobile md:max-w-container-content mx-auto flex flex-col gap-10 md:gap-12">
             <div class="flex flex-col md:flex-row items-start justify-between gap-10 md:gap-0">
-                <div class="w-full md:w-[28.5rem] flex flex-col gap-6 md:gap-12">
-                    <div class="h-5 md:h-6 w-full">
-                        <img src="./assets/logo.svg" alt="Lockfix Logo" class="h-full" loading="lazy" decoding="async" fetchpriority="low">
+                <div class="w-full md:w-auto flex flex-col gap-5 md:gap-6">
+                    <div class="h-16 w-16 md:h-20 md:w-20">
+                        <img src="./assets/logo.svg" alt="Schlüsseldienst Turan Logo" class="h-full w-full object-contain brightness-0 invert" loading="lazy" decoding="async">
                     </div>
-                    <p class="font-bold text-heading-1-mobile md:text-heading-1 leading-heading-1-mobile md:leading-heading-1 tracking-tight text-white">
+                    <p class="font-bold text-2xl md:text-3xl leading-tight tracking-tight text-white max-w-xs">
                         Sichern wir Ihre Zukunft
                     </p>
-                    <button class="texture-button texture-button-white w-full md:w-55 h-11 md:h-15 flex items-center justify-center gap-2">
-                        <span class="font-medium text-body-mobile md:text-body leading-body-mobile md:leading-body tracking-tight text-black">Jetzt anrufen</span>
-                        <i data-lucide="phone" class="w-4 h-4 md:w-5 md:h-5 text-black"></i>
-                    </button>
+                    <a href="tel:+4915565906604" class="inline-flex items-center justify-center gap-2 bg-white text-brand-primary-dark font-semibold text-sm px-5 py-3 rounded-xl hover:bg-white/90 transition-colors w-fit">
+                        <span>Jetzt anrufen</span>
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                    </a>
                 </div>
 
-                <div class="flex flex-col md:flex-row gap-10 md:gap-24 items-start md:items-start w-full md:w-auto">
-                    <div class="flex flex-col gap-4 md:gap-6 w-full md:w-[14rem]">
-                        <p class="font-normal text-label leading-label tracking-wide uppercase text-text-muted-dark text-xs md:text-label">Kontakt</p>
-                        <p class="font-light text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-white">+49 89 1234 5678</p>
-                        <p class="font-light text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-white">hilfe@lockfix.de</p>
+                <div class="flex flex-col md:flex-row gap-10 md:gap-16 items-start">
+                    <div class="flex flex-col gap-4">
+                        <p class="font-semibold text-xs tracking-widest uppercase text-white/50">Kontakt</p>
+                        <div class="flex flex-col gap-2">
+                            <a href="tel:+4915565906604" class="font-normal text-sm text-white hover:text-white/80 transition-colors">0155 659 066 04</a>
+                            <a href="mailto:info@schluesseldienst-turan.de" class="font-normal text-sm text-white hover:text-white/80 transition-colors">info@schluesseldienst-turan.de</a>
+                        </div>
                     </div>
 
-                    <div class="w-full md:w-[14rem]">
-                        <p class="font-normal text-label leading-label tracking-wide uppercase text-text-muted-dark mb-6 md:mb-8 text-xs md:text-label">Standort</p>
+                    <div class="flex flex-col gap-4">
+                        <p class="font-semibold text-xs tracking-widest uppercase text-white/50">Standort</p>
                         <div class="flex flex-col gap-1">
-                            <p class="font-light text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-text-muted">Leopoldstraße 254</p>
-                            <p class="font-light text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-text-muted">80807 München</p>
-                            <p class="font-light text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-text-muted">Deutschland</p>
+                            <p class="font-normal text-sm text-white/70">Bavariastraße 14d</p>
+                            <p class="font-normal text-sm text-white/70">80336 München</p>
+                            <p class="font-normal text-sm text-white/70">Deutschland</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4">
+                        <p class="font-semibold text-xs tracking-widest uppercase text-white/50">Rechtliches</p>
+                        <div class="flex flex-col gap-2">
+                            <a href="./impressum.html" class="font-normal text-sm text-white/70 hover:text-white transition-colors">Impressum</a>
+                            <a href="./datenschutz.html" class="font-normal text-sm text-white/70 hover:text-white transition-colors">Datenschutz</a>
+                            <a href="./agb.html" class="font-normal text-sm text-white/70 hover:text-white transition-colors">AGB</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0 min-h-[3.5rem] py-3 md:py-0 md:h-[3.5rem] pt-px">
-                <p class="font-light text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-tight text-text-muted-dark">
-                    © 2024 MUCLOCK Schlüsseldienst. Alle Rechte vorbehalten.
+            <div class="border-t border-white/10 pt-6 md:pt-8">
+                <p class="font-normal text-xs text-white/40 text-center">
+                    © 2025 Schlüsseldienst Turan. Alle Rechte vorbehalten.
                 </p>
-                <div class="flex flex-col md:flex-row gap-4 md:gap-8">
-                    <a href="#" class="footer-link font-light text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-tight text-text-muted-dark hover:text-white transition-colors relative inline-block">Impressum</a>
-                    <a href="#" class="footer-link font-light text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-tight text-text-muted-dark hover:text-white transition-colors relative inline-block">Datenschutz</a>
-                    <a href="#" class="footer-link font-light text-body-sm-mobile md:text-body-sm leading-body-sm-mobile md:leading-body-sm tracking-tight text-text-muted-dark hover:text-white transition-colors relative inline-block">AGB</a>
-                </div>
             </div>
         </div>
     </footer>
     <script src="./src/script.js" defer></script>
-    <!-- Vercel Speed Insights -->
-    <script>
-        (function() {
-            var script = document.createElement('script');
-            script.src = 'https://va.vercel-scripts.com/v1/speed-insights/script.js';
-            script.defer = true;
-            document.head.appendChild(script);
-        })();
-    </script>
-    <!-- Vercel Analytics -->
-    <script>
-        (function() {
-            var script = document.createElement('script');
-            script.src = 'https://va.vercel-scripts.com/v1/script.js';
-            script.defer = true;
-            document.head.appendChild(script);
-        })();
-    </script>
 </body>
 </html>

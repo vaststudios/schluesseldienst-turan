@@ -1,60 +1,3 @@
-// Theme Management
-(function() {
-    const getThemePreference = () => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-            return localStorage.getItem('theme');
-        }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    };
-
-    const setTheme = (theme, isManualToggle = false) => {
-        const root = document.documentElement;
-        root.classList.remove('light', 'dark');
-        root.classList.add(theme);
-        if (isManualToggle) {
-            // Only save to localStorage if user manually toggled
-            localStorage.setItem('theme', theme);
-            localStorage.setItem('theme-manual', 'true');
-        } else {
-            // Clear manual flag if setting based on OS preference
-            localStorage.removeItem('theme-manual');
-        }
-    };
-
-    // Initialize theme on page load
-    // The inline script already set it based on OS preference or manual preference
-    // This code just ensures event listeners are set up correctly
-    // No need to override what inline script already did
-
-    // Theme toggle button handlers (desktop and mobile)
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-    
-    const handleThemeToggle = () => {
-        const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme, true); // Mark as manual toggle and save to localStorage
-        // Re-initialize icons after theme change
-        setTimeout(() => lucide.createIcons(), 100);
-    };
-    
-    if (themeToggle) {
-        themeToggle.addEventListener('click', handleThemeToggle);
-    }
-    
-    if (themeToggleMobile) {
-        themeToggleMobile.addEventListener('click', handleThemeToggle);
-    }
-
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        // Only update if user hasn't manually set a preference
-        if (localStorage.getItem('theme-manual') !== 'true') {
-            setTheme(e.matches ? 'dark' : 'light', false); // Don't mark as manual, don't save
-        }
-    });
-})();
-
 // Initialize Lucide icons - wait for DOM and Lucide to be ready
 (function() {
     if (document.readyState === 'loading') {
@@ -127,11 +70,11 @@
 
 // Typewriter Animation for Philosophy Heading
 function startTypewriterAnimation(element) {
-    const fullText = "Wir verbinden traditionelles Handwerk mit digitaler Sicherheit, um aus Schwachstellen Stärke zu machen.";
-    const words = fullText.split(' ');
     const wordsContainer = element.querySelector('.typewriter-words');
-    
     if (!wordsContainer) return;
+    
+    const fullText = wordsContainer.textContent.trim();
+    const words = fullText.split(' ');
     
     // Pre-populate with invisible text to reserve space and prevent layout shift
     wordsContainer.innerHTML = `<span style="opacity: 0; visibility: hidden; position: absolute; white-space: pre-wrap;">${fullText}</span>`;
@@ -172,8 +115,9 @@ function startTypewriterAnimation(element) {
                 });
                 
                 // Check if this is the part that should be dimmed
-                if (currentWordIndex >= words.indexOf('um')) {
-                    wordSpan.classList.add('text-white/25', 'dark:text-black/25');
+                const umIndex = words.indexOf('um');
+                if (umIndex !== -1 && currentWordIndex >= umIndex) {
+                    wordSpan.classList.add('text-brand-primary/25');
                 }
                 
                 currentWordIndex++;
@@ -222,7 +166,7 @@ function startTypewriterAnimation(element) {
 
     // Only initialize Swiper on mobile devices
     let teamSwiperInstance = null;
-    if (window.innerWidth < 391) {
+    if (window.innerWidth < 768) {
         teamSwiperInstance = initTeamSwiper();
     }
 
@@ -233,9 +177,9 @@ function startTypewriterAnimation(element) {
         resizeTimer = setTimeout(() => {
             const swiperEl = document.querySelector('.team-swiper');
             if (swiperEl) {
-                if (window.innerWidth < 391 && !swiperEl.swiper) {
+                if (window.innerWidth < 768 && !swiperEl.swiper) {
                     teamSwiperInstance = initTeamSwiper();
-                } else if (window.innerWidth >= 391 && swiperEl.swiper) {
+                } else if (window.innerWidth >= 768 && swiperEl.swiper) {
                     swiperEl.swiper.destroy(true, true);
                     teamSwiperInstance = null;
                 }

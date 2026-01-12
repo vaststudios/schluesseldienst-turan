@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
   content: [
     "./index.html",
     "./page.html",
@@ -10,17 +9,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'brand-orange': '#ff6900',
-        'brand-orange-dark': '#f54900',
-        'brand-orange-light': '#ff8904',
+        'brand-primary': '#1a365d',
+        'brand-primary-dark': '#0d1b2a',
+        'brand-primary-light': '#2a4a7f',
+        'brand-accent': '#5C78A5', // Steel blue accent (from logo gradient)
+        'brand-steel': '#5C78A5',
+        'brand-steel-dark': '#4F6A7B',
+        'brand-silver': '#A1A1A1',
         'brand-dark': '#191919',
-        'text-muted': '#a1a1a1',
-        'text-muted-dark': '#6b6b6b',
-        'border-subtle': 'rgba(255, 255, 255, 0.1)',
-        'border-subtle-dark': 'rgba(255, 255, 255, 0.05)',
+        'brand-light': '#ffffff',
+        'brand-light-alt': '#f8fafc',
+        'text-dark': '#1a1a1a',
+        'text-muted': '#64748b',
+        'text-muted-dark': '#475569',
+        'border-subtle': 'rgba(0, 0, 0, 0.1)',
+        'border-subtle-dark': 'rgba(0, 0, 0, 0.05)',
         'bg-overlay': 'rgba(0, 0, 0, 0.4)',
-        'bg-status': 'rgba(245, 73, 0, 0.2)',
-        'bg-status-border': 'rgba(245, 73, 0, 0.3)',
+        'bg-status': 'rgba(26, 54, 93, 0.1)',
+        'bg-status-border': 'rgba(26, 54, 93, 0.2)',
       },
       spacing: {
         '44': '176px', // rounded from 180px

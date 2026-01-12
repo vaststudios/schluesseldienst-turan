@@ -26,10 +26,12 @@
         }
 
         :root {
-            --brand-orange: #ff6900;
-            --brand-orange-dark: #f54900;
-            --brand-dark: #191919;
-            --text-muted: #6b6b6b;
+            --brand-primary: #5C78A5;
+            --brand-primary-dark: #1a365d;
+            --brand-dark: #0f0f0f;
+            --brand-dark-elevated: #161616;
+            --text-muted: #737373;
+            --text-subtle: #525252;
         }
 
         html, body {
@@ -45,52 +47,52 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Animated gradient background */
+        /* Animated gradient background - more subtle and elegant */
         .bg-gradient {
             position: fixed;
             inset: 0;
-            background: 
-                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(255, 105, 0, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(245, 73, 0, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse 100% 100% at 50% 100%, rgba(255, 105, 0, 0.05) 0%, transparent 40%);
-            animation: gradientShift 15s ease-in-out infinite alternate;
+            background:
+                radial-gradient(ellipse 120% 80% at 50% 120%, rgba(92, 120, 165, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 80% 50% at 20% 30%, rgba(92, 120, 165, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 85% 70%, rgba(26, 54, 93, 0.05) 0%, transparent 50%);
+            animation: gradientShift 20s ease-in-out infinite alternate;
             pointer-events: none;
         }
 
         @keyframes gradientShift {
             0% {
                 opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.8;
-                transform: scale(1.05);
+                transform: scale(1) translateY(0);
             }
             100% {
-                opacity: 1;
-                transform: scale(1);
+                opacity: 0.85;
+                transform: scale(1.02) translateY(-10px);
             }
         }
 
-        /* Subtle grid pattern */
+        /* Refined grid pattern */
         .bg-grid {
             position: fixed;
             inset: 0;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 80px 80px;
             pointer-events: none;
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 70%);
         }
 
-        /* Noise texture */
+        /* Subtle noise texture */
         .bg-noise {
             position: fixed;
             inset: 0;
-            opacity: 0.3;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            opacity: 0.25;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
             pointer-events: none;
         }
 
@@ -99,48 +101,54 @@
             z-index: 10;
             text-align: center;
             padding: 2rem;
-            max-width: 600px;
+            max-width: 680px;
         }
 
-        /* Animated badge */
+        /* Refined badge with glass morphism */
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: rgba(255, 105, 0, 0.1);
-            border: 1px solid rgba(255, 105, 0, 0.2);
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(92, 120, 165, 0.08);
+            border: 1px solid rgba(92, 120, 165, 0.15);
             border-radius: 100px;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.1em;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--brand-orange);
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 0.8s ease-out;
+            color: var(--brand-primary);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow:
+                0 0 0 1px rgba(92, 120, 165, 0.05),
+                0 4px 24px -4px rgba(0, 0, 0, 0.3);
         }
 
         .badge::before {
             content: '';
-            width: 8px;
-            height: 8px;
-            background: var(--brand-orange);
+            width: 6px;
+            height: 6px;
+            background: var(--brand-primary);
             border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
+            animation: pulse 2.5s ease-in-out infinite;
+            box-shadow: 0 0 12px rgba(92, 120, 165, 0.6);
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 12px rgba(92, 120, 165, 0.6); }
+            50% { opacity: 0.6; transform: scale(0.85); box-shadow: 0 0 6px rgba(92, 120, 165, 0.3); }
         }
 
         h1 {
-            font-size: clamp(3rem, 12vw, 7rem);
+            font-size: clamp(3.5rem, 14vw, 8rem);
             font-weight: 700;
-            letter-spacing: -0.04em;
-            line-height: 0.95;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 0.8s ease-out 0.1s backwards;
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
         }
 
         h1 span {
@@ -148,55 +156,89 @@
         }
 
         h1 .highlight {
-            background: linear-gradient(135deg, var(--brand-orange), var(--brand-orange-dark));
+            background: linear-gradient(135deg, var(--brand-primary) 0%, #7b93bd 50%, var(--brand-primary-dark) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientText 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .subtitle {
-            font-size: clamp(1rem, 3vw, 1.25rem);
+            font-size: clamp(1rem, 3vw, 1.15rem);
             color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards;
+            font-weight: 400;
+            max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Animated underline */
+        /* Refined divider with glow */
         .divider {
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--brand-orange), var(--brand-orange-dark));
+            width: 48px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--brand-primary), transparent);
             border-radius: 2px;
-            margin: 0 auto 3rem;
-            animation: fadeInUp 0.8s ease-out 0.3s backwards, expandWidth 1s ease-out 0.5s backwards;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
+            position: relative;
         }
 
-        @keyframes expandWidth {
-            from { width: 0; }
-            to { width: 60px; }
+        .divider::after {
+            content: '';
+            position: absolute;
+            inset: -4px -8px;
+            background: linear-gradient(90deg, transparent, rgba(92, 120, 165, 0.3), transparent);
+            filter: blur(8px);
+            border-radius: 4px;
         }
 
         .contact-hint {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.4);
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+            font-size: 13px;
+            color: var(--text-subtle);
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
+            letter-spacing: 0.01em;
         }
 
         .contact-hint a {
-            color: var(--brand-orange);
+            color: var(--brand-primary);
             text-decoration: none;
-            transition: opacity 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .contact-hint a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--brand-primary);
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .contact-hint a:hover {
-            opacity: 0.8;
+            color: #7b93bd;
+        }
+
+        .contact-hint a:hover::after {
+            width: 100%;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(24px);
             }
             to {
                 opacity: 1;
@@ -204,7 +246,7 @@
             }
         }
 
-        /* Floating particles */
+        /* Refined floating particles */
         .particles {
             position: fixed;
             inset: 0;
@@ -214,35 +256,41 @@
 
         .particle {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--brand-orange);
+            width: 3px;
+            height: 3px;
+            background: var(--brand-primary);
             border-radius: 50%;
-            opacity: 0.2;
-            animation: float 20s infinite linear;
+            opacity: 0;
+            animation: float 25s infinite linear;
+            box-shadow: 0 0 6px rgba(92, 120, 165, 0.4);
         }
 
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
-        .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 20s; }
-        .particle:nth-child(3) { left: 30%; animation-delay: 4s; animation-duration: 28s; }
-        .particle:nth-child(4) { left: 50%; animation-delay: 1s; animation-duration: 22s; }
-        .particle:nth-child(5) { left: 70%; animation-delay: 3s; animation-duration: 24s; }
-        .particle:nth-child(6) { left: 85%; animation-delay: 5s; animation-duration: 26s; }
-        .particle:nth-child(7) { left: 95%; animation-delay: 2.5s; animation-duration: 21s; }
+        .particle:nth-child(1) { left: 8%; animation-delay: 0s; animation-duration: 28s; }
+        .particle:nth-child(2) { left: 18%; animation-delay: 3s; animation-duration: 24s; }
+        .particle:nth-child(3) { left: 32%; animation-delay: 6s; animation-duration: 30s; }
+        .particle:nth-child(4) { left: 48%; animation-delay: 2s; animation-duration: 26s; }
+        .particle:nth-child(5) { left: 65%; animation-delay: 5s; animation-duration: 28s; }
+        .particle:nth-child(6) { left: 78%; animation-delay: 8s; animation-duration: 32s; }
+        .particle:nth-child(7) { left: 92%; animation-delay: 4s; animation-duration: 24s; }
 
         @keyframes float {
             0% {
                 transform: translateY(100vh) scale(0);
                 opacity: 0;
             }
-            10% {
-                opacity: 0.3;
+            5% {
+                opacity: 0.25;
+                transform: translateY(90vh) scale(0.5);
             }
-            90% {
-                opacity: 0.3;
+            50% {
+                opacity: 0.35;
+            }
+            95% {
+                opacity: 0.25;
+                transform: translateY(-90vh) scale(0.5);
             }
             100% {
-                transform: translateY(-100vh) scale(1);
+                transform: translateY(-100vh) scale(0);
                 opacity: 0;
             }
         }
@@ -254,6 +302,27 @@
                 animation-iteration-count: 1 !important;
             }
             .particle { display: none; }
+        }
+
+        /* Mobile refinements */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .badge {
+                padding: 8px 16px;
+                font-size: 10px;
+                margin-bottom: 2.5rem;
+            }
+
+            h1 {
+                margin-bottom: 1.5rem;
+            }
+
+            .subtitle {
+                margin-bottom: 2rem;
+            }
         }
     </style>
 </head>
@@ -291,7 +360,7 @@
         <div class="divider"></div>
         
         <p class="contact-hint">
-            Bei dringenden Anfragen: <a href="tel:+4989123456">+49 89 123 456</a>
+            Bei dringenden Anfragen: <a href="tel:+4915565906604">0155 659 066 04</a>
         </p>
     </main>
 </body>
