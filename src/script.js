@@ -331,6 +331,7 @@ function debounce(func, wait) {
     const animateCounter = (element) => {
         const target = parseInt(element.getAttribute('data-target'));
         const suffix = element.getAttribute('data-suffix') || '';
+        const prefix = element.getAttribute('data-prefix') || '';
         const duration = 1500;
         const start = 0;
         const increment = target / (duration / 16);
@@ -339,10 +340,10 @@ function debounce(func, wait) {
         const updateCounter = () => {
             current += increment;
             if (current < target) {
-                element.textContent = Math.floor(current) + suffix;
+                element.textContent = prefix + Math.floor(current) + suffix;
                 requestAnimationFrame(updateCounter);
             } else {
-                element.textContent = target + suffix;
+                element.textContent = prefix + target + suffix;
                 element.classList.add('counter-animate');
             }
         };

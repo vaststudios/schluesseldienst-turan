@@ -122,8 +122,8 @@
             <!-- Hero Section -->
             <section class="hero-section flex flex-col gap-6 md:gap-10">
                 <!-- Status Badge -->
-                <div class="animate-on-scroll stagger-1 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-8">
-                    <div class="bg-status border border-bg-status-border flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full overflow-hidden w-fit">
+                <div class="animate-on-scroll stagger-1 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-8 relative z-10">
+                    <div class="bg-status border border-bg-status-border flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full overflow-hidden w-fit relative z-10">
                         <span class="relative flex h-2 w-2 shrink-0">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
@@ -190,8 +190,8 @@
                             <p class="font-medium text-[10px] md:text-xs leading-tight tracking-widest uppercase text-neutral-400">Erreichbarkeit</p>
                         </div>
                         <div class="animate-on-scroll stagger-3 flex flex-col gap-2 items-center text-center">
-                            <p class="stat-number font-bold text-3xl md:text-5xl leading-none tracking-tighter text-text-dark" data-target="5000" data-suffix="+">0</p>
-                            <p class="font-medium text-[10px] md:text-xs leading-tight tracking-widest uppercase text-neutral-400">Öffnungen</p>
+                            <p class="stat-number font-bold text-3xl md:text-5xl leading-none tracking-tighter text-text-dark" data-target="65" data-suffix="€" data-prefix="ab ">0</p>
+                            <p class="font-medium text-[10px] md:text-xs leading-tight tracking-widest uppercase text-neutral-400">Festpreis</p>
                         </div>
                         <div class="animate-on-scroll stagger-4 flex flex-col gap-2 items-center text-center">
                             <p class="stat-number font-bold text-3xl md:text-5xl leading-none tracking-tighter text-text-dark" data-target="100" data-suffix="%">0</p>
@@ -257,10 +257,10 @@
                     </article>
 
                     <!-- Card 4 - Map -->
-                    <article class="animate-on-scroll stagger-5 group relative isolate h-80 md:h-96 rounded-3xl clip-content border border-neutral-200 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <a href="https://www.google.com/maps/place/Munich,+Germany" target="_blank" rel="noopener noreferrer" class="animate-on-scroll stagger-5 group relative isolate h-80 md:h-96 rounded-3xl clip-content border border-neutral-200 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-lg block">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86512.83419516498!2d11.48054839726562!3d48.15428820000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f9a38c5fd9%3A0x10cb84a7db1987d!2sMunich!5e0!3m2!1sen!2sde!4v1704067200000!5m2!1sen!2sde" width="100%" height="100%" style="border:none;filter:grayscale(100%) contrast(1.1);" class="absolute inset-0 w-full h-full pointer-events-none" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="München Karte"></iframe>
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none"></div>
-                        <div class="relative h-full flex flex-col justify-between p-6 md:p-8 pointer-events-none">
+                        <div class="relative h-full flex flex-col justify-between p-6 md:p-8 pointer-events-auto">
                             <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center">
                                 <i data-lucide="map-pin" class="w-5 h-5 text-white"></i>
                             </div>
@@ -270,7 +270,87 @@
                                 <p class="text-sm text-white/80 leading-relaxed max-w-sm">Alle Postleitzahlen abgedeckt.</p>
                             </div>
                         </div>
-                    </article>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Pricing Section -->
+            <section id="pricing" class="flex flex-col gap-8 md:gap-12 scroll-mt-[120px] md:scroll-mt-[140px]">
+                <div class="animate-on-scroll stagger-1 flex flex-col gap-3 md:gap-4">
+                    <p class="font-medium text-xs md:text-label leading-label tracking-widest uppercase text-brand-primary">// Unsere Preise</p>
+                    <h2 class="font-bold text-heading-1-mobile md:text-heading-1 leading-heading-1-mobile md:leading-heading-1 tracking-tight text-text-dark">Garantierte Festpreise. Keine versteckten Kosten.</h2>
+                </div>
+
+                <!-- Pricing Table -->
+                <div class="animate-on-scroll stagger-2 bg-white border border-neutral-200 rounded-card overflow-hidden">
+                    <div class="p-6 md:p-8">
+                        <div class="mb-6">
+                            <p class="font-semibold text-base md:text-lg text-text-dark mb-2">Aufsperrung von zugezogenen oder zugefallenen Türen</p>
+                            <p class="font-normal text-sm md:text-base text-text-muted">Ohne Selbstverriegelung - Alle Preise inklusive Anfahrt</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <!-- Weekday Pricing -->
+                            <div class="border-b border-neutral-200 pb-4">
+                                <h3 class="font-bold text-sm md:text-base text-text-dark mb-3 uppercase tracking-wide">Mo-Fr (Montag - Freitag)</h3>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center py-2">
+                                        <span class="font-normal text-sm md:text-base text-text-muted">8:00 - 18:00 Uhr</span>
+                                        <span class="font-bold text-base md:text-lg text-brand-primary">79€</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-2">
+                                        <span class="font-normal text-sm md:text-base text-text-muted">18:00 - 22:00 Uhr</span>
+                                        <span class="font-bold text-base md:text-lg text-brand-primary">89€</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-2">
+                                        <span class="font-normal text-sm md:text-base text-text-muted">22:00 - 8:00 Uhr</span>
+                                        <span class="font-bold text-base md:text-lg text-brand-primary">109€</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Saturday Pricing -->
+                            <div class="border-b border-neutral-200 pb-4">
+                                <h3 class="font-bold text-sm md:text-base text-text-dark mb-3 uppercase tracking-wide">Sa (Samstag)</h3>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center py-2">
+                                        <span class="font-normal text-sm md:text-base text-text-muted">8:00 - 22:00 Uhr</span>
+                                        <span class="font-bold text-base md:text-lg text-brand-primary">99€</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-2">
+                                        <span class="font-normal text-sm md:text-base text-text-muted">22:00 - 8:00 Uhr</span>
+                                        <span class="font-bold text-base md:text-lg text-brand-primary">119€</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sunday & Holiday Pricing -->
+                            <div class="pb-2">
+                                <h3 class="font-bold text-sm md:text-base text-text-dark mb-3 uppercase tracking-wide">So & Feiertag (Sonntag & Feiertag)</h3>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center py-2">
+                                        <span class="font-normal text-sm md:text-base text-text-muted">00:00 - 24:00 Uhr</span>
+                                        <span class="font-bold text-base md:text-lg text-brand-primary">139€</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Disclaimer -->
+                        <div class="mt-6 pt-6 border-t border-neutral-200">
+                            <p class="font-normal text-xs md:text-sm text-text-muted leading-relaxed">
+                                Die hier angegebenen Preise sind unsere garantierten Festpreise, die für die Aufsperrung von zugezogenen oder zugefallenen Türen - ohne Selbstverriegelung - gelten. Natürlich können Sie uns auch gern kontaktieren, wenn Sie eine Preisanfrage für eine andere Schlosser-Tätigkeit benötigen. Nach Schilderung Ihres Problems machen wir Ihnen auch hierfür ein ebenso günstiges wie faires Festpreis-Angebot!
+                            </p>
+                        </div>
+
+                        <!-- CTA -->
+                        <div class="mt-6">
+                            <a href="tel:+4915565906604" class="texture-button texture-button-accent w-full md:w-auto px-6 py-3 flex items-center justify-center gap-2">
+                                <span class="font-bold text-body-mobile md:text-body-lg leading-body-mobile md:leading-body-lg tracking-tight text-white">Jetzt anrufen</span>
+                                <i data-lucide="phone" class="w-4 h-4 md:w-5 md:h-5 text-white"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -289,7 +369,7 @@
                         <div class="flex flex-col md:flex-row">
                             <!-- Image Container -->
                             <div class="w-full md:w-1/2 aspect-square md:aspect-auto bg-neutral-100 flex-shrink-0 overflow-hidden">
-                                <img src="./assets/semih.jpeg" alt="Semih Turan" class="w-full h-full object-cover" loading="lazy" decoding="async">
+                                <img src="./assets/semih.jpeg" alt="Semih Turan" class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='./assets/semih.jpeg';" width="400" height="400">
                             </div>
                             <!-- Info -->
                             <div class="flex flex-col gap-4 p-6 md:p-10 text-center md:text-left flex-1 justify-center">
