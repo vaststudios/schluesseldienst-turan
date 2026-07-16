@@ -20,6 +20,19 @@ pnpm lint
 pnpm build
 ```
 
+## Deployment
+
+Die produktive Quelle ist das öffentliche Repository `vaststudios/schluesseldienst-turan`. Deployments laufen in das bestehende Vercel-Projekt `semih-turans-projects/turan`; daran hängen `schluesseldienst-turan.de` und `www.schluesseldienst-turan.de`.
+
+Bis im Semih-Vercel-Account eine GitHub-Login-Verbindung eingerichtet ist, wird ein geprüfter Stand mit der Vercel CLI ausgerollt:
+
+```bash
+vercel link --scope semih-turans-projects --project turan
+vercel deploy --prod
+```
+
+Das frühere private Repository `vaststudios/turan` ist nicht mehr die produktive Quelle; Git-Deployments daraus werden im Hobby-Plan blockiert.
+
 ## Ratgeber
 
 Unter `/ratgeber` steht ein statisch generierter Ratgeber mit sieben ausführlichen Artikeln zu Türöffnungen, Kosten, Schlosstechnik, Anbieterauswahl und Einbruchschutz bereit. Inhalte und Metadaten werden zentral in `lib/blog.ts` gepflegt; die optimierten Artikelbilder liegen unter `public/assets/blog`.
